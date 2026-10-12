@@ -11,11 +11,483 @@ window.PORTFOLIO = {
     location: "Alegrete, RS · Brasil",
     email: "guilhermemundt2@gmail.com",
     github: "https://github.com/doffyGC",
-    linkedin: null, // TODO: URL do LinkedIn
+    linkedin: "https://www.linkedin.com/in/guilherme-mundt-5381602a6/",
     lattes: null, // TODO: adicionar depois
     cv: null, // TODO: caminho do CV sem telefone, ex.: "cv/guilherme-mundt-cv.pdf"
     photo: null, // TODO: caminho da foto, ex.: "img/foto.jpg"
     available: true,
+    // ID do formulário no Formspree (ex.: "xabcdwyz"). Sem ID, o formulário abre o app de e-mail.
+    formspree: null,
+  },
+
+  // ---------- Ficha do personagem ----------
+  about: {
+    bio: [
+      {
+        pt: "Sou estudante de Engenharia de Software na UNIPAMPA, em Alegrete (RS). Hoje desenvolvo software para a unidade de saúde de Jaguari como bolsista do PET-Saúde e, no estágio curricular, levei uma plataforma de gestão de gincanas para uso real numa escola.",
+        en: "I'm a Software Engineering student at UNIPAMPA, in Alegrete (Brazil). Right now I build software for the public health unit of Jaguari as a PET-Saúde scholarship developer, and in my curricular internship I took a school-event management platform into real use at a public school.",
+        es: "Soy estudiante de Ingeniería de Software en la UNIPAMPA, en Alegrete (Brasil). Hoy desarrollo software para la unidad de salud de Jaguari como becario de PET-Saúde y, en mis prácticas curriculares, llevé una plataforma de gestión de gincanas al uso real en una escuela.",
+      },
+      {
+        pt: "Gosto de jogar nas duas pontas: desenvolvimento web full-stack (React, Node.js, NestJS, SvelteKit) e IA aplicada (pipelines RAG, agentes com LLM e machine learning explicável). Trabalho sempre em equipe, com Git Flow e revisão de código, e estou procurando uma vaga de desenvolvedor júnior ou web.",
+        en: "I like to play on both ends: full-stack web development (React, Node.js, NestJS, SvelteKit) and applied AI (RAG pipelines, LLM agents and explainable machine learning). I always work in teams, with Git Flow and code review, and I'm looking for a junior or web developer role.",
+        es: "Me gusta jugar en los dos extremos: desarrollo web full-stack (React, Node.js, NestJS, SvelteKit) e IA aplicada (pipelines RAG, agentes con LLM y machine learning explicable). Siempre trabajo en equipo, con Git Flow y revisión de código, y busco una vacante de desarrollador junior o web.",
+      },
+    ],
+    info: [
+      { k: { pt: "Nome", en: "Name", es: "Nombre" }, v: "Guilherme Chagas Mundt" },
+      { k: { pt: "Guilda", en: "Guild", es: "Gremio" }, v: { pt: "UNIPAMPA · Engenharia de Software", en: "UNIPAMPA · Software Engineering", es: "UNIPAMPA · Ingeniería de Software" } },
+      { k: { pt: "Base", en: "Home base", es: "Base" }, v: "Alegrete, RS · Brasil" },
+      { k: { pt: "Idiomas", en: "Languages", es: "Idiomas" }, v: { pt: "Português (nativo) · Inglês (intermediário)", en: "Portuguese (native) · English (intermediate)", es: "Portugués (nativo) · Inglés (intermedio)" } },
+      { k: { pt: "Interesses", en: "Interests", es: "Intereses" }, v: { pt: "IA explicável, cibersegurança, IoT, IA agêntica", en: "Explainable AI, cybersecurity, IoT, agentic AI", es: "IA explicable, ciberseguridad, IoT, IA agéntica" } },
+    ],
+    photoSoon: { pt: "Foto em breve", en: "Photo coming soon", es: "Foto pronto" },
+    statsTitle: { pt: "Estatísticas", en: "Stats", es: "Estadísticas" },
+    stats: {
+      level: { pt: "Semestres", en: "Semesters", es: "Semestres" },
+      quests: { pt: "Quests concluídas", en: "Quests completed", es: "Misiones completadas" },
+      chapters: { pt: "Experiências", en: "Experiences", es: "Experiencias" },
+      skills: { pt: "Tecnologias", en: "Technologies", es: "Tecnologías" },
+    },
+  },
+
+  // ---------- Skill tree ----------
+  // "used" aponta para ids de quests, capítulos da campanha ou andares da raid
+  skills: {
+    hint: { pt: "Escolha uma skill para ver onde ela foi usada.", en: "Pick a skill to see where it was used.", es: "Elige una habilidad para ver dónde se usó." },
+    usedIn: { pt: "Usada em", en: "Used in", es: "Usada en" },
+    noUse: { pt: "Usada em estudos e cursos.", en: "Used in studies and courses.", es: "Usada en estudios y cursos." },
+    branches: [
+      {
+        icon: "⌨",
+        name: { pt: "Linguagens", en: "Languages", es: "Lenguajes" },
+        nodes: [
+          { name: "Python", used: ["unibot", "graygoose", "hit", "insightminer", "erenoai", "knapsack"] },
+          { name: "JavaScript", used: ["scavenger", "demeter", "rea", "estagio"] },
+          { name: "TypeScript", used: ["unibot", "brisa", "petsaude"] },
+          { name: "Java", used: ["ereno"] },
+        ],
+      },
+      {
+        icon: "◈",
+        name: { pt: "Web & Frameworks", en: "Web & Frameworks", es: "Web y Frameworks" },
+        nodes: [
+          { name: "React", used: ["petsaude", "scavenger", "unibot", "estagio"] },
+          { name: "NestJS", used: ["petsaude"] },
+          { name: "Node.js / Express", used: ["scavenger", "demeter", "brisa", "estagio"] },
+          { name: "SvelteKit", used: ["demeter"] },
+          { name: "FastAPI", used: ["unibot"] },
+          { name: "Vite", used: ["unibot", "ereno2"] },
+          { name: "Tailwind CSS", used: [] },
+          { name: "HTML5 / CSS3", used: ["rea"] },
+        ],
+      },
+      {
+        icon: "▤",
+        name: { pt: "Bancos de dados", en: "Databases", es: "Bases de datos" },
+        nodes: [
+          { name: "PostgreSQL", used: [] },
+          { name: "MySQL", used: [] },
+          { name: "MongoDB", used: ["scavenger", "estagio"] },
+          { name: "ChromaDB", used: ["unibot"] },
+          { name: "Firebase", used: ["demeter", "ereno2"] },
+        ],
+      },
+      {
+        icon: "✦",
+        name: { pt: "IA & Dados", en: "AI & Data", es: "IA y Datos" },
+        nodes: [
+          { name: "RAG", used: ["unibot"] },
+          { name: { pt: "Agentes com LLM", en: "LLM agents", es: "Agentes con LLM" }, used: ["unibot", "erenoai", "insightminer"] },
+          { name: "SHAP (XAI)", used: ["graygoose", "erenoai"] },
+          { name: "scikit-learn", used: ["graygoose", "erenoai"] },
+          { name: "Pandas", used: ["hit", "graygoose"] },
+          { name: "Streamlit", used: ["hit"] },
+        ],
+      },
+      {
+        icon: "☁",
+        name: { pt: "Cloud & DevOps", en: "Cloud & DevOps", es: "Cloud y DevOps" },
+        nodes: [
+          { name: "Docker", used: ["petsaude", "graygoose", "hit"] },
+          { name: "Docker Compose", used: ["hit"] },
+          { name: "AWS", used: [] },
+          { name: "Azure", used: [] },
+          { name: "Vercel / Render", used: ["scavenger"] },
+        ],
+      },
+      {
+        icon: "✓",
+        name: { pt: "Versionamento & Testes", en: "Versioning & Testing", es: "Versionado y Pruebas" },
+        nodes: [
+          { name: "Git / Git Flow", used: ["estagio", "brisa", "petsaude", "unibot"] },
+          { name: "Pytest", used: ["unibot"] },
+          { name: "Jest", used: [] },
+          { name: "JUnit", used: [] },
+          { name: "Postman", used: ["brisa"] },
+        ],
+      },
+    ],
+  },
+
+  // ---------- Campanha (ordem cronológica) ----------
+  campaign: {
+    chapter: { pt: "Capítulo", en: "Chapter", es: "Capítulo" },
+    current: { pt: "Em andamento", en: "In progress", es: "En curso" },
+    now: { pt: "▶ Você está aqui", en: "▶ You are here", es: "▶ Estás aquí" },
+    chapters: [
+      {
+        id: "medio",
+        kind: "edu",
+        title: { pt: "Ensino Médio", en: "High school", es: "Educación secundaria" },
+        org: "Carlos Drummond de Andrade",
+        place: "Alvorada, RS",
+        period: "— 12/2022",
+        bullets: [],
+      },
+      {
+        id: "unipampa",
+        kind: "edu",
+        title: { pt: "Bacharelado em Engenharia de Software", en: "B.Sc. in Software Engineering", es: "Grado en Ingeniería de Software" },
+        org: "UNIPAMPA · Universidade Federal do Pampa",
+        place: "Alegrete, RS",
+        period: "03/2023 — …",
+        current: true,
+        bullets: [
+          { pt: "Projetos de disciplina viraram produtos reais: UniBot, Scavenger Project, Demeter e outros.", en: "Course projects turned into real products: UniBot, Scavenger Project, Demeter and more.", es: "Proyectos de asignatura se volvieron productos reales: UniBot, Scavenger Project, Demeter y otros." },
+          { pt: "Pesquisa em IA explicável e cibersegurança para smart grids (ecossistema ERENO).", en: "Research on explainable AI and cybersecurity for smart grids (ERENO ecosystem).", es: "Investigación en IA explicable y ciberseguridad para smart grids (ecosistema ERENO)." },
+        ],
+      },
+      {
+        id: "brisa",
+        kind: "work",
+        title: { pt: "Residente em Desenvolvimento de Software", en: "Software Development Resident", es: "Residente en Desarrollo de Software" },
+        org: "BRISA · Residência em TIC",
+        place: { pt: "Híbrido", en: "Hybrid", es: "Híbrido" },
+        period: "03/2025 — 09/2025",
+        bullets: [
+          { pt: "Programa de residência de sete meses voltado ao mercado, desenvolvendo um sistema real em equipe.", en: "Seven-month, industry-focused residency program, building a real system as a team.", es: "Programa de residencia de siete meses orientado al mercado, desarrollando un sistema real en equipo." },
+          { pt: "Serviços REST em TypeScript (Node.js/Express) com controllers, rotas e serviços separados.", en: "REST services in TypeScript (Node.js/Express) with separate controllers, routes and services.", es: "Servicios REST en TypeScript (Node.js/Express) con controllers, rutas y servicios separados." },
+          { pt: "Git Flow com pull requests revisados pelos pares.", en: "Git Flow with peer-reviewed pull requests.", es: "Git Flow con pull requests revisados por pares." },
+        ],
+      },
+      {
+        id: "pet",
+        kind: "work",
+        title: { pt: "Desenvolvedor de Software (bolsista)", en: "Software Developer (scholarship)", es: "Desarrollador de Software (becario)" },
+        org: "Grupo PET-Saúde",
+        place: { pt: "Híbrido", en: "Hybrid", es: "Híbrido" },
+        period: "09/2025 — …",
+        current: true,
+        bullets: [
+          { pt: "Soluções para a unidade de saúde de Jaguari (RS), com React.js no front-end e NestJS no back-end.", en: "Solutions for the public health unit of Jaguari (Brazil), with React.js on the front end and NestJS on the back end.", es: "Soluciones para la unidad de salud de Jaguari (Brasil), con React.js en el front-end y NestJS en el back-end." },
+          { pt: "Entregou um sistema de comunicação com os cidadãos sobre a vacinação de gestantes e crianças.", en: "Shipped a citizen communication system about vaccination for pregnant women and children.", es: "Entregó un sistema de comunicación con la ciudadanía sobre la vacunación de embarazadas y niños." },
+          { pt: "Desenvolve os módulos de transporte de pacientes e de exames; conteineriza os serviços com Docker e apoia o deploy.", en: "Building the patient transport and exams modules; containerizes services with Docker and supports deployment.", es: "Desarrolla los módulos de transporte de pacientes y de exámenes; contenedoriza los servicios con Docker y apoya el despliegue." },
+        ],
+      },
+      {
+        id: "estagio",
+        kind: "work",
+        title: { pt: "Desenvolvedor de Software (estágio curricular)", en: "Software Developer (curricular internship)", es: "Desarrollador de Software (prácticas curriculares)" },
+        org: "Escola Demétrio Ribeiro",
+        place: "Alegrete, RS",
+        period: "03/2026 — 12/2026",
+        current: true,
+        bullets: [
+          { pt: "Implantou na escola a plataforma de gincanas Scavenger Project, levando um sistema de disciplina para uso real por servidores e alunos.", en: "Deployed the Scavenger Project gymkhana platform at the school, taking a course project into real use by staff and students.", es: "Implantó en la escuela la plataforma de gincanas Scavenger Project, llevando un sistema de asignatura al uso real por funcionarios y alumnos." },
+          { pt: "Stack completa: React, Node.js/Express e MongoDB Atlas, com rotas protegidas por JWT e e-mails transacionais.", en: "Full stack: React, Node.js/Express and MongoDB Atlas, with JWT-protected routes and transactional e-mails.", es: "Stack completo: React, Node.js/Express y MongoDB Atlas, con rutas protegidas por JWT y correos transaccionales." },
+          { pt: "Terceiro maior contribuidor entre oito desenvolvedores (46 commits).", en: "Third-largest contributor among eight developers (46 commits).", es: "Tercer mayor contribuidor entre ocho desarrolladores (46 commits)." },
+        ],
+      },
+    ],
+  },
+
+  // ---------- Raid: ecossistema ERENO ----------
+  raid: {
+    intro: {
+      pt: "O ERENO é um gerador de tráfego sintético IEC 61850 / GOOSE para smart grids, usado para treinar e testar sistemas de detecção de intrusão (IDS) em subestações de energia. Participo do ecossistema em três frentes:",
+      en: "ERENO is a synthetic IEC 61850 / GOOSE traffic generator for smart grids, used to train and test intrusion detection systems (IDS) for power substations. I contribute to the ecosystem on three fronts:",
+      es: "ERENO es un generador de tráfico sintético IEC 61850 / GOOSE para smart grids, usado para entrenar y probar sistemas de detección de intrusos (IDS) en subestaciones eléctricas. Participo del ecosistema en tres frentes:",
+    },
+    floor: { pt: "Andar", en: "Floor", es: "Piso" },
+    floors: [
+      {
+        id: "ereno",
+        title: "ERENO",
+        subtitle: { pt: "Simulador IEC 61850 (Java)", en: "IEC 61850 simulator (Java)", es: "Simulador IEC 61850 (Java)" },
+        stack: ["Java"],
+        bullets: [
+          { pt: "Implementou os mecanismos de degradação benigna da rede (impairments, caso de uso UC01) e o suporte a eles no contexto de execução.", en: "Implemented benign network degradation mechanisms (impairments, use case UC01) and their run-context support.", es: "Implementó los mecanismos de degradación benigna de la red (impairments, caso de uso UC01) y su soporte en el contexto de ejecución." },
+          { pt: "Adicionou colunas de metadados ao dataset: seed, configuração da subestação, loss_rate e outras.", en: "Added metadata columns to the dataset: seed, substation config, loss_rate and others.", es: "Agregó columnas de metadatos al dataset: seed, configuración de la subestación, loss_rate y otras." },
+        ],
+        links: [{ label: "sequincozes/ereno · refactor/fix-major-revision", url: "https://github.com/sequincozes/ereno/tree/refactor/fix-major-revision" }],
+      },
+      {
+        id: "ereno2",
+        title: "ERENO 2.0",
+        subtitle: { pt: "Front-end e back-end desacoplados", en: "Decoupled front end and back end", es: "Front-end y back-end desacoplados" },
+        stack: ["JavaScript", "Vite", "Firebase"],
+        bullets: [
+          { pt: "Construiu a primeira versão do front-end: telas de configuração de ataque (incluindo múltiplos ataques), de IED e de fluxo GOOSE.", en: "Built the first version of the front end: attack configuration (including multiple attacks), IED and GOOSE flow screens.", es: "Construyó la primera versión del front-end: pantallas de configuración de ataque (incluidos múltiples ataques), de IED y de flujo GOOSE." },
+          { pt: "Upload de arquivos, download do dataset gerado, persistência no Firebase Realtime Database e deploy do front-end.", en: "File upload, generated-dataset download, Firebase Realtime Database persistence and front-end deployment.", es: "Carga de archivos, descarga del dataset generado, persistencia en Firebase Realtime Database y despliegue del front-end." },
+        ],
+        links: [{ label: "sequincozes/ereno-2.0 · dev-guilherme", url: "https://github.com/sequincozes/ereno-2.0/tree/dev-guilherme" }],
+      },
+      {
+        id: "erenoai",
+        title: "ERENO AI",
+        subtitle: { pt: "Laboratório adversarial com agentes", en: "Adversarial lab with agents", es: "Laboratorio adversarial con agentes" },
+        stack: ["Python", "Agno", "scikit-learn", "SHAP"],
+        bullets: [
+          { pt: "Loop Red Team × Blue Team: um agente Estrategista propõe ataques parametrizados; o núcleo regenera o dataset e treina o IDS.", en: "Red Team × Blue Team loop: a Strategist agent proposes parametrized attacks; the core regenerates the dataset and retrains the IDS.", es: "Bucle Red Team × Blue Team: un agente Estratega propone ataques parametrizados; el núcleo regenera el dataset y entrena el IDS." },
+          { pt: "Um agente Analista explica, com XAI, quais features enganaram o detector e recomenda mitigações.", en: "An Analyst agent explains, with XAI, which features fooled the detector and recommends mitigations.", es: "Un agente Analista explica, con XAI, qué features engañaron al detector y recomienda mitigaciones." },
+          { pt: "Integrou o ERENO 2.0 ao ERENO AI como submódulo.", en: "Integrated ERENO 2.0 into ERENO AI as a submodule.", es: "Integró ERENO 2.0 en ERENO AI como submódulo." },
+        ],
+        links: [
+          { label: "sequincozes/ereno-ai", url: "https://github.com/sequincozes/ereno-ai" },
+          { label: "ERENO-AI-LAB", private: true },
+        ],
+      },
+    ],
+  },
+
+  // ---------- Quest log ----------
+  quests: {
+    tiers: {
+      main: { pt: "Main quests", en: "Main quests", es: "Misiones principales" },
+      side: { pt: "Side quests", en: "Side quests", es: "Misiones secundarias" },
+      wip: { pt: "Quest em andamento", en: "Quest in progress", es: "Misión en curso" },
+    },
+    repo: { pt: "Código", en: "Code", es: "Código" },
+    demo: { pt: "Jogar demo", en: "Play demo", es: "Jugar demo" },
+    private: { pt: "🔒 Código privado", en: "🔒 Private code", es: "🔒 Código privado" },
+    details: { pt: "Ver missão", en: "View quest", es: "Ver misión" },
+    team: { pt: "Party", en: "Party", es: "Grupo" },
+    list: [
+      {
+        id: "unibot",
+        tier: "main",
+        title: "UniBot · Pampa Live Messenger",
+        subtitle: { pt: "Assistente conversacional institucional (RAG)", en: "Institutional conversational assistant (RAG)", es: "Asistente conversacional institucional (RAG)" },
+        period: "05/2026 — 06/2026",
+        team: { pt: "4 devs", en: "4 devs", es: "4 devs" },
+        stack: ["Python", "FastAPI", "Agno", "ChromaDB", "Groq", "React", "Vite", "TypeScript", "Pytest"],
+        desc: {
+          pt: "Assistente da UNIPAMPA inspirado no Windows Live Messenger: cursos, departamentos e serviços viram contatos de chat que respondem dúvidas sobre PPCs, resoluções, calendário e regulamentos.",
+          en: "A UNIPAMPA assistant inspired by Windows Live Messenger: courses, departments and services become chat contacts that answer questions about course plans, resolutions, calendars and regulations.",
+          es: "Asistente de la UNIPAMPA inspirado en Windows Live Messenger: carreras, departamentos y servicios se vuelven contactos de chat que responden dudas sobre planes de estudio, resoluciones, calendario y reglamentos.",
+        },
+        bullets: [
+          { pt: "Pipeline RAG com recuperação híbrida sobre base vetorial ChromaDB.", en: "RAG pipeline with hybrid retrieval over a ChromaDB vector store.", es: "Pipeline RAG con recuperación híbrida sobre base vectorial ChromaDB." },
+          { pt: "Orquestrador com fatos rápidos, geração por LLM, memória de conversa e fallback de busca externa.", en: "Orchestrator combining quick facts, LLM generation, conversation memory and external search fallback.", es: "Orquestador con datos rápidos, generación por LLM, memoria de conversación y fallback de búsqueda externa." },
+          { pt: "Interface em React + Vite + TypeScript e testes com Pytest.", en: "React + Vite + TypeScript interface and Pytest tests.", es: "Interfaz en React + Vite + TypeScript y pruebas con Pytest." },
+        ],
+        repo: "https://github.com/doffyGC/UniBot",
+      },
+      {
+        id: "scavenger",
+        tier: "main",
+        title: "Scavenger Project",
+        subtitle: { pt: "Gestão de gincanas escolares", en: "School gymkhana management", es: "Gestión de gincanas escolares" },
+        period: "2026",
+        team: { pt: "8 devs", en: "8 devs", es: "8 devs" },
+        stack: ["React", "Node.js", "Express", "MongoDB Atlas", "JWT"],
+        desc: {
+          pt: "Plataforma full-stack para gincanas escolares, implantada de verdade na Escola Demétrio Ribeiro: equipes, provas, penalidades, feedbacks e notificações.",
+          en: "A full-stack platform for school gymkhanas, actually deployed at Escola Demétrio Ribeiro: teams, challenges, penalties, feedback and notifications.",
+          es: "Plataforma full-stack para gincanas escolares, implantada de verdad en la Escuela Demétrio Ribeiro: equipos, pruebas, penalizaciones, feedback y notificaciones.",
+        },
+        bullets: [
+          { pt: "Rotas protegidas por JWT e envio de e-mails transacionais.", en: "JWT-protected routes and transactional e-mails.", es: "Rutas protegidas por JWT y envío de correos transaccionales." },
+          { pt: "Terceiro maior contribuidor (46 commits), sob Git Flow com revisão de código.", en: "Third-largest contributor (46 commits), under Git Flow with code review.", es: "Tercer mayor contribuidor (46 commits), con Git Flow y revisión de código." },
+        ],
+        repo: "https://github.com/ScavengerProject/ScavengerProject-repo",
+        demo: "https://drgincana.vercel.app",
+      },
+      {
+        id: "petsaude",
+        tier: "main",
+        title: "PET-Saúde Tech IV",
+        subtitle: { pt: "Comunicação de vacinação da Saúde de Jaguari", en: "Vaccination communication for Jaguari's health unit", es: "Comunicación de vacunación de la Salud de Jaguari" },
+        period: "09/2025 — …",
+        team: { pt: "Equipe de bolsistas", en: "Scholarship team", es: "Equipo de becarios" },
+        stack: ["React", "NestJS", "GovBR-DS", "Docker"],
+        desc: {
+          pt: "Plataforma para a Secretaria de Saúde de Jaguari levar informações à população, começando pelo calendário de vacinação de gestantes e crianças.",
+          en: "A platform for Jaguari's Health Department to reach the population with information, starting with the vaccination calendar for pregnant women and children.",
+          es: "Plataforma para que la Secretaría de Salud de Jaguari lleve información a la población, empezando por el calendario de vacunación de embarazadas y niños.",
+        },
+        bullets: [
+          { pt: "Interface com o design system do governo (GovBR-DS).", en: "Interface built on the Brazilian government design system (GovBR-DS).", es: "Interfaz con el design system del gobierno brasileño (GovBR-DS)." },
+          { pt: "Em andamento: módulos de transporte de pacientes e de exames.", en: "In progress: patient transport and exams modules.", es: "En curso: módulos de transporte de pacientes y de exámenes." },
+        ],
+        repoPrivate: true,
+      },
+      {
+        id: "graygoose",
+        tier: "main",
+        title: "Gray-GOOSE",
+        subtitle: { pt: "ML explicável contra ataques na IEC 61850", en: "Explainable ML against IEC 61850 attacks", es: "ML explicable contra ataques en IEC 61850" },
+        period: "08/2025 — 04/2026",
+        team: { pt: "Pesquisa", en: "Research", es: "Investigación" },
+        stack: ["Python", "scikit-learn", "SHAP", "Docker", "Jupyter"],
+        desc: {
+          pt: "Pipeline reprodutível que treina e avalia modelos de machine learning contra ataques grayhole DoS em tráfego GOOSE da norma IEC 61850.",
+          en: "A reproducible pipeline that trains and evaluates machine learning models against grayhole DoS attacks on IEC 61850 GOOSE traffic.",
+          es: "Pipeline reproducible que entrena y evalúa modelos de machine learning contra ataques grayhole DoS en tráfico GOOSE de la norma IEC 61850.",
+        },
+        bullets: [
+          { pt: "Explicações com SHAP comparando execuções com e sem atributos delta.", en: "SHAP explanations comparing runs with and without delta features.", es: "Explicaciones con SHAP comparando ejecuciones con y sin atributos delta." },
+          { pt: "Experimento inteiro em Docker: qualquer pesquisador reproduz os resultados com um comando.", en: "The whole experiment runs in Docker: any researcher can reproduce the results with one command.", es: "Todo el experimento en Docker: cualquier investigador reproduce los resultados con un comando." },
+        ],
+        repo: "https://github.com/doffyGC/explicability-GOOSE-research",
+      },
+      {
+        id: "hit",
+        tier: "side",
+        title: { pt: "A Ciência por Trás do Hit", en: "The Science Behind the Hit", es: "La Ciencia Detrás del Hit" },
+        subtitle: { pt: "Dashboard analítico de música", en: "Music analytics dashboard", es: "Dashboard analítico de música" },
+        period: "06/2026 — 07/2026",
+        stack: ["Python", "Pandas", "Streamlit", "Docker Compose"],
+        desc: {
+          pt: "Pipeline bronze/silver/gold sobre 2.000 faixas do Spotify (2000–2019) e um dashboard Streamlit que responde o que caracteriza um hit.",
+          en: "A bronze/silver/gold pipeline over 2,000 Spotify tracks (2000–2019) and a Streamlit dashboard answering what makes a hit.",
+          es: "Pipeline bronze/silver/gold sobre 2.000 canciones de Spotify (2000–2019) y un dashboard Streamlit que responde qué caracteriza a un hit.",
+        },
+        repo: "https://github.com/doffyGC/dashboard-icd",
+      },
+      {
+        id: "demeter",
+        tier: "side",
+        title: "Demeter",
+        subtitle: { pt: "Marketplace de máquinas pesadas", en: "Heavy machinery marketplace", es: "Marketplace de maquinaria pesada" },
+        period: "2025",
+        stack: ["SvelteKit", "Node.js", "Express", "Firebase"],
+        desc: {
+          pt: "Aluguel de máquinas pesadas com fluxo de negociação modelado pelo padrão State, além de Builder e Decorator, chat, avaliações e notificações.",
+          en: "Heavy machinery rental with a negotiation workflow modeled with the State pattern, plus Builder and Decorator, chat, reviews and notifications.",
+          es: "Alquiler de maquinaria pesada con flujo de negociación modelado con el patrón State, además de Builder y Decorator, chat, reseñas y notificaciones.",
+        },
+        repoPrivate: true,
+      },
+      {
+        id: "insightminer",
+        tier: "side",
+        title: "InsightMiner",
+        subtitle: { pt: "Agente de análise de dados", en: "Data analysis agent", es: "Agente de análisis de datos" },
+        period: "2026",
+        stack: ["Python", { pt: "Agentes com LLM", en: "LLM agents", es: "Agentes con LLM" }],
+        desc: {
+          pt: "Agente de IA que explora datasets sozinho, gera insights e visualizações e responde perguntas em linguagem natural.",
+          en: "An AI agent that explores datasets on its own, generates insights and charts, and answers questions in natural language.",
+          es: "Agente de IA que explora datasets por su cuenta, genera insights y visualizaciones y responde preguntas en lenguaje natural.",
+        },
+        repo: "https://github.com/doffyGC/InsightMiner",
+      },
+      {
+        id: "rea",
+        tier: "side",
+        title: { pt: "Recurso Educacional Aberto", en: "Open Educational Resource", es: "Recurso Educativo Abierto" },
+        subtitle: { pt: "Acessibilidade e inclusão digital", en: "Accessibility and digital inclusion", es: "Accesibilidad e inclusión digital" },
+        period: "2026",
+        stack: ["JavaScript", "HTML5", "CSS3"],
+        desc: {
+          pt: "Material didático sobre acessibilidade na web, com simulador de leitor de tela e verificador de contraste.",
+          en: "Teaching material on web accessibility, with a screen reader simulator and a contrast checker.",
+          es: "Material didáctico sobre accesibilidad web, con simulador de lector de pantalla y verificador de contraste.",
+        },
+        repo: "https://github.com/doffyGC/Recurso-Educacional-Aberto",
+      },
+      {
+        id: "knapsack",
+        tier: "side",
+        title: "Multiple Knapsack Problem",
+        subtitle: { pt: "Heurística específica", en: "Problem-specific heuristic", es: "Heurística específica" },
+        period: "2025",
+        stack: ["Python"],
+        desc: {
+          pt: "Heurística específica para o problema da mochila múltipla, desenvolvida para Teoria da Computação.",
+          en: "A problem-specific heuristic for the multiple knapsack problem, built for a Theory of Computation course.",
+          es: "Heurística específica para el problema de la mochila múltiple, desarrollada para Teoría de la Computación.",
+        },
+        repoPrivate: true,
+      },
+      {
+        id: "mundthub",
+        tier: "wip",
+        title: "MundtHub",
+        subtitle: { pt: "Gestão de colaboradores com IA explicável", en: "Workforce management with explainable AI", es: "Gestión de colaboradores con IA explicable" },
+        period: "2026 — …",
+        stack: [],
+        desc: {
+          pt: "Plataforma modular de gestão de colaboradores (ponto, RH, ausências e auditoria) com detecção de anomalias via IA explicável.",
+          en: "A modular workforce management platform (time tracking, HR, absences and auditing) with anomaly detection through explainable AI.",
+          es: "Plataforma modular de gestión de colaboradores (fichaje, RR. HH., ausencias y auditoría) con detección de anomalías mediante IA explicable.",
+        },
+        repo: "https://github.com/doffyGC/MundtHub",
+      },
+    ],
+  },
+
+  // ---------- Grimório ----------
+  grimoire: {
+    intro: {
+      pt: "Os feitiços que eu estudo. Cada um aponta para onde ele já foi usado em batalha.",
+      en: "The spells I study. Each one points to where it has already been used in battle.",
+      es: "Los hechizos que estudio. Cada uno apunta a dónde ya se usó en batalla.",
+    },
+    usedIn: { pt: "Usado em", en: "Used in", es: "Usado en" },
+    spells: [
+      {
+        icon: "◉",
+        name: { pt: "IA Explicável (XAI)", en: "Explainable AI (XAI)", es: "IA Explicable (XAI)" },
+        desc: { pt: "Fazer modelos de ML mostrarem por que tomaram uma decisão, para que dê para confiar (e corrigir) o que eles fazem.", en: "Making ML models show why they made a decision, so we can trust (and fix) what they do.", es: "Hacer que los modelos de ML muestren por qué tomaron una decisión, para poder confiar (y corregir) lo que hacen." },
+        used: ["graygoose", "erenoai", "mundthub"],
+      },
+      {
+        icon: "⛨",
+        name: { pt: "Cibersegurança", en: "Cybersecurity", es: "Ciberseguridad" },
+        desc: { pt: "Detecção de intrusão em subestações de energia: gerar ataques, medir o IDS e endurecer a defesa.", en: "Intrusion detection in power substations: generating attacks, measuring the IDS and hardening the defense.", es: "Detección de intrusos en subestaciones eléctricas: generar ataques, medir el IDS y endurecer la defensa." },
+        used: ["ereno", "ereno2", "erenoai", "graygoose"],
+      },
+      {
+        icon: "⌁",
+        name: { pt: "Internet das Coisas", en: "Internet of Things", es: "Internet de las Cosas" },
+        desc: { pt: "Redes industriais e smart grids: tráfego GOOSE, IEDs e a norma IEC 61850.", en: "Industrial networks and smart grids: GOOSE traffic, IEDs and the IEC 61850 standard.", es: "Redes industriales y smart grids: tráfico GOOSE, IEDs y la norma IEC 61850." },
+        used: ["ereno", "ereno2", "graygoose"],
+      },
+      {
+        icon: "✧",
+        name: { pt: "IA Agêntica", en: "Agentic AI", es: "IA Agéntica" },
+        desc: { pt: "Agentes com LLM que planejam, usam ferramentas e trabalham juntos: de assistentes RAG a times Red × Blue.", en: "LLM agents that plan, use tools and work together: from RAG assistants to Red × Blue teams.", es: "Agentes con LLM que planifican, usan herramientas y trabajan juntos: de asistentes RAG a equipos Red × Blue." },
+        used: ["unibot", "erenoai", "insightminer"],
+      },
+    ],
+  },
+
+  // ---------- Conquistas (certificados) ----------
+  certificates: [
+    { icon: "🏆", title: { pt: "Desenvolvimento Web", en: "Web Development", es: "Desarrollo Web" }, issuer: "Udemy", date: "12/2022" },
+    { icon: "🏆", title: { pt: "Machine Learning e Data Science", en: "Machine Learning & Data Science", es: "Machine Learning y Data Science" }, issuer: "Udemy", date: "12/2023" },
+    { icon: "🏆", title: { pt: "Nivelação do Programa Residência em TIC", en: "ICT Residency Program Leveling", es: "Nivelación del Programa de Residencia en TIC" }, issuer: "BRISA", date: "01/2025" },
+  ],
+
+  // ---------- Contato ----------
+  contact: {
+    intro: {
+      pt: "Procurando alguém para a sua party? Mande uma mensagem: respondo rápido.",
+      en: "Looking for someone to join your party? Send a message: I reply fast.",
+      es: "¿Buscas a alguien para tu grupo? Envía un mensaje: respondo rápido.",
+    },
+    name: { pt: "Seu nome", en: "Your name", es: "Tu nombre" },
+    email: { pt: "Seu e-mail", en: "Your e-mail", es: "Tu correo" },
+    message: { pt: "Mensagem", en: "Message", es: "Mensaje" },
+    send: { pt: "Enviar", en: "Send", es: "Enviar" },
+    sending: { pt: "Enviando…", en: "Sending…", es: "Enviando…" },
+    sent: { pt: "Mensagem enviada! Obrigado, já já eu respondo.", en: "Message sent! Thanks, I'll reply soon.", es: "¡Mensaje enviado! Gracias, respondo pronto." },
+    error: { pt: "Não deu para enviar. Tente pelo e-mail ao lado.", en: "Couldn't send it. Try the e-mail link instead.", es: "No se pudo enviar. Prueba con el correo." },
+    mailtoNote: { pt: "Vai abrir o seu app de e-mail com a mensagem pronta.", en: "This will open your e-mail app with the message ready.", es: "Se abrirá tu app de correo con el mensaje listo." },
+    links: { pt: "Ou me encontre em", en: "Or find me at", es: "O encuéntrame en" },
   },
 
   // Ordem das seções no site e no menu. "id" vira a âncora (#id).

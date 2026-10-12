@@ -173,7 +173,7 @@
 
 .title-screen {
   position: relative;
-  min-height: calc(100svh - var(--hud-h));
+  min-height: min(calc(100svh - var(--hud-h)), 920px);
   display: flex;
   align-items: center;
   padding: 40px 0 72px;

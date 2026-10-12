@@ -88,7 +88,7 @@
         </div>
         <div class="hud-spacer"></div>
         <div class="hud-xp game-only" title="${esc(t(D.ui.visitorXp))}">
-          <span class="lv" id="visitorLv">Lv 1</span>
+          <span class="lv" id="visitorLv">Lv <span class="num">1</span></span>
           <div class="bar" id="visitorXp" style="--fill: 0%"><span class="sr-only">0 XP</span></div>
         </div>
         <div class="hud-tools">
@@ -122,7 +122,7 @@
               <span style="color: var(--muted)">${esc(t(T.classDetail))} · ${esc(D.profile.location)}</span></p>
             <div class="title-stats">
               <div class="level-box">
-                <span class="lv">Lv. ${level}</span>
+                <span class="lv">Lv. <span class="num">${level}</span></span>
                 <span>${ordinal(level)} ${esc(t(T.semester))}</span>
                 <div class="bar" style="--fill: ${Math.round(progress * 100)}%; --bar-color: var(--mp)" aria-hidden="true"></div>
               </div>
@@ -144,9 +144,254 @@
       </section>`;
   }
 
-  // ---------- Seções (por enquanto, placeholders) ----------
+  // ---------- Seções ----------
+
+  // Tudo o que pode ser "linkado" de outras seções (skill tree, grimório): quests, andares da raid e capítulos
+  const PLACES = (() => {
+    const map = {};
+    D.quests.list.forEach((q) => (map[q.id] = { label: t(q.title), href: `#quest-${q.id}` }));
+    D.raid.floors.forEach((f) => (map[f.id] = { label: f.title, href: `#raid-${f.id}` }));
+    D.campaign.chapters.forEach((c) => (map[c.id] = { label: t(c.org), href: `#cap-${c.id}` }));
+    return map;
+  })();
+
+  const placeLinks = (ids) =>
+    ids
+      .filter((id) => PLACES[id])
+      .map((id) => `<a href="${PLACES[id].href}">${esc(PLACES[id].label)}</a>`)
+      .join(", ");
+
+  const tags = (list) =>
+    list.length ? `<ul class="tags" aria-label="Stack">${list.map((x) => `<li>${esc(t(x))}</li>`).join("")}</ul>` : "";
+
+  const ext = (url, label, cls = "link-btn") =>
+    `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${label} <span aria-hidden="true">↗</span></a>`;
+
+  function sheet() {
+    const A = D.about;
+    const { level } = characterLevel();
+    const photo = D.profile.photo
+      ? `<img src="${BASE}${esc(D.profile.photo)}" alt="${esc(D.profile.name)}" width="320" height="320" loading="lazy">`
+      : `<div class="portrait-empty">${Sprite.head()}<span>${esc(t(A.photoSoon))}</span></div>`;
+    const nodes = D.skills.branches.reduce((n, b) => n + b.nodes.length, 0);
+    const stats = [
+      [level, A.stats.level],
+      [D.quests.list.filter((q) => q.tier !== "wip").length, A.stats.quests],
+      [D.campaign.chapters.filter((c) => c.kind === "work").length, A.stats.chapters],
+      [nodes, A.stats.skills],
+    ];
+    return `
+      <div class="sheet">
+        <figure class="dialog portrait">
+          <div class="portrait-frame">${photo}</div>
+          <figcaption><span class="pixel">${esc(D.profile.shortName)}</span> <span class="lv">Lv. <span class="num">${level}</span></span></figcaption>
+        </figure>
+        <div class="sheet-main">
+          <div class="dialog prose">${A.bio.map((p) => `<p>${esc(t(p))}</p>`).join("")}</div>
+          <dl class="dialog info">
+            ${A.info.map((r) => `<div><dt>${esc(t(r.k))}</dt><dd>${esc(t(r.v))}</dd></div>`).join("")}
+          </dl>
+          <div class="stats" role="list" aria-label="${esc(t(A.statsTitle))}">
+            ${stats.map(([n, l]) => `<div class="stat" role="listitem"><span class="stat-n num">${n}</span><span class="stat-l">${esc(t(l))}</span></div>`).join("")}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function skillTree() {
+    const S = D.skills;
+    const branches = S.branches
+      .map(
+        (b, bi) => `
+        <div class="dialog branch">
+          <h3><span class="branch-icon" aria-hidden="true">${b.icon}</span> ${esc(t(b.name))}</h3>
+          <ul class="nodes">
+            ${b.nodes
+              .map((n, ni) => `<li><button class="node" type="button" aria-pressed="false" data-skill="${bi}-${ni}">${esc(t(n.name))}</button></li>`)
+              .join("")}
+          </ul>
+        </div>`
+      )
+      .join("");
+    return `
+      <div class="skill-tree">${branches}</div>
+      <div class="dialog skill-detail" id="skillDetail" aria-live="polite"><p>${esc(t(S.hint))}</p></div>`;
+  }
+
+  function campaign() {
+    const C = D.campaign;
+    const last = C.chapters.length - 1;
+    return `
+      <ol class="timeline">
+        ${C.chapters
+          .map(
+            (c, i) => `
+          <li class="chapter${c.current ? " is-current" : ""}" id="cap-${c.id}">
+            <div class="chap-marker num" aria-hidden="true">${i + 1}</div>
+            <article class="dialog">
+              <p class="chap-top"><span class="pixel">${esc(t(C.chapter))} ${i + 1}</span>
+                <span>${esc(c.period)}</span>
+                ${c.current ? `<span class="badge badge-live"><span class="dot" aria-hidden="true"></span>${esc(t(C.current))}</span>` : ""}</p>
+              <h3>${c.kind === "edu" ? "🎓" : "⚔"} ${esc(t(c.title))}</h3>
+              <p class="chap-org">${esc(t(c.org))} · ${esc(t(c.place))}</p>
+              ${c.bullets.length ? `<ul class="bullets">${c.bullets.map((b) => `<li>${esc(t(b))}</li>`).join("")}</ul>` : ""}
+            </article>
+            ${i === last ? `<p class="you-are-here pixel game-only">${esc(t(C.now))}</p>` : ""}
+          </li>`
+          )
+          .join("")}
+      </ol>`;
+  }
+
+  function linkList(links) {
+    return links
+      .map((l) => (l.private ? `<span class="link-btn is-private">${esc(l.label)} · ${esc(t(D.quests.private))}</span>` : ext(l.url, esc(l.label))))
+      .join("");
+  }
+
+  function raid() {
+    const R = D.raid;
+    return `
+      <div class="dialog prose raid-intro"><p>${esc(t(R.intro))}</p></div>
+      <ol class="tower">
+        ${R.floors
+          .map(
+            (f, i) => `
+          <li class="dialog floor" id="raid-${f.id}">
+            <p class="floor-n pixel">${esc(t(R.floor))} ${i + 1}</p>
+            <h3>${esc(f.title)} <span class="sub">${esc(t(f.subtitle))}</span></h3>
+            ${tags(f.stack)}
+            <ul class="bullets">${f.bullets.map((b) => `<li>${esc(t(b))}</li>`).join("")}</ul>
+            <div class="links">${linkList(f.links)}</div>
+          </li>`
+          )
+          .join("")}
+      </ol>`;
+  }
+
+  function questCard(q) {
+    const Q = D.quests;
+    const stars = { main: "★★★", side: "★★", wip: "🔒" }[q.tier];
+    const actions = [
+      q.repo ? ext(q.repo, esc(t(Q.repo))) : "",
+      q.repoPrivate ? `<span class="link-btn is-private">${esc(t(Q.private))}</span>` : "",
+      q.demo ? ext(q.demo, `▶ ${esc(t(Q.demo))}`, "link-btn is-demo") : "",
+    ].join("");
+    const details = q.bullets?.length
+      ? `<details class="quest-details">
+          <summary>${esc(t(Q.details))}</summary>
+          <ul class="bullets">${q.bullets.map((b) => `<li>${esc(t(b))}</li>`).join("")}</ul>
+          ${q.team ? `<p class="muted">${esc(t(Q.team))}: ${esc(t(q.team))}</p>` : ""}
+        </details>`
+      : "";
+    return `
+      <article class="dialog quest quest-${q.tier}" id="quest-${q.id}">
+        <p class="quest-top"><span class="stars" aria-hidden="true">${stars}</span><span>${esc(q.period)}</span></p>
+        <h4>${esc(t(q.title))}</h4>
+        <p class="quest-sub">${esc(t(q.subtitle))}</p>
+        <p>${esc(t(q.desc))}</p>
+        ${tags(q.stack)}
+        ${details}
+        <div class="links">${actions}</div>
+      </article>`;
+  }
+
+  function questLog() {
+    const Q = D.quests;
+    return ["main", "side", "wip"]
+      .map((tier) => {
+        const list = Q.list.filter((q) => q.tier === tier);
+        if (!list.length) return "";
+        return `
+          <h3 class="tier-title">${esc(t(Q.tiers[tier]))}</h3>
+          <div class="quest-grid quest-grid-${tier}">${list.map(questCard).join("")}</div>`;
+      })
+      .join("");
+  }
+
+  function grimoire() {
+    const G = D.grimoire;
+    return `
+      <p class="section-intro">${esc(t(G.intro))}</p>
+      <div class="spell-grid">
+        ${G.spells
+          .map(
+            (s) => `
+          <article class="dialog spell">
+            <span class="spell-icon" aria-hidden="true">${s.icon}</span>
+            <h3>${esc(t(s.name))}</h3>
+            <p>${esc(t(s.desc))}</p>
+            <p class="muted">${esc(t(G.usedIn))}: ${placeLinks(s.used)}</p>
+          </article>`
+          )
+          .join("")}
+      </div>`;
+  }
+
+  function achievements() {
+    return `
+      <ul class="achievements">
+        ${D.certificates
+          .map(
+            (c) => `
+          <li class="dialog achievement">
+            <span class="ach-icon" aria-hidden="true">${c.icon}</span>
+            <div><h3>${esc(t(c.title))}</h3><p class="muted">${esc(c.issuer)} · ${esc(c.date)}</p></div>
+          </li>`
+          )
+          .join("")}
+      </ul>`;
+  }
+
+  function contact() {
+    const C = D.contact;
+    const P = D.profile;
+    const links = [
+      [`mailto:${P.email}`, "✉", P.email],
+      [P.linkedin, "in", "LinkedIn"],
+      [P.github, "⌥", "GitHub · doffyGC"],
+      [P.lattes, "▣", "Lattes"],
+    ].filter(([url]) => url);
+    return `
+      <div class="contact">
+        <form class="dialog contact-form" id="contactForm" novalidate>
+          <p>${esc(t(C.intro))}</p>
+          <label>${esc(t(C.name))}<input name="name" autocomplete="name" required maxlength="120"></label>
+          <label>${esc(t(C.email))}<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+          <label>${esc(t(C.message))}<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
+          <!-- Campo-armadilha para bots: pessoas não veem -->
+          <div class="sr-only" aria-hidden="true"><input name="_gotcha" tabindex="-1" autocomplete="off"></div>
+          <button class="btn" type="submit">▶ ${esc(t(C.send))}</button>
+          ${P.formspree ? "" : `<p class="muted small">${esc(t(C.mailtoNote))}</p>`}
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+        <div class="dialog contact-links">
+          <h3>${esc(t(C.links))}</h3>
+          <ul>
+            ${links
+              .map(([url, icon, label]) => {
+                const mail = url.startsWith("mailto:");
+                return `<li><a href="${esc(url)}" ${mail ? "" : 'target="_blank" rel="noopener"'}><span class="link-icon" aria-hidden="true">${icon}</span>${esc(label)}</a></li>`;
+              })
+              .join("")}
+          </ul>
+        </div>
+      </div>`;
+  }
+
+  const RENDERERS = {
+    ficha: sheet,
+    skills: skillTree,
+    campanha: campaign,
+    raid,
+    quests: questLog,
+    grimorio: grimoire,
+    conquistas: achievements,
+    contato: contact,
+  };
 
   function section(s) {
+    const body = RENDERERS[s.id] ? RENDERERS[s.id]() : `<div class="dialog wip"><p>${t(D.ui.wip)}</p></div>`;
     return `
       <section class="section" id="${s.id}" aria-labelledby="h-${s.id}">
         <div class="wrap">
@@ -154,9 +399,66 @@
             <h2 id="h-${s.id}">${esc(t(s.game))}</h2>
             <span class="legend">${esc(t(s.legend))}</span>
           </header>
-          <div class="dialog wip"><p>${t(D.ui.wip)}</p></div>
+          ${body}
         </div>
       </section>`;
+  }
+
+  function setupSkills() {
+    const detail = document.getElementById("skillDetail");
+    if (!detail) return;
+    const buttons = document.querySelectorAll(".node");
+    buttons.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        const [bi, ni] = btn.dataset.skill.split("-").map(Number);
+        const node = D.skills.branches[bi].nodes[ni];
+        buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        const where = placeLinks(node.used);
+        detail.innerHTML = `<p><strong class="pixel">${esc(t(node.name))}</strong> · ${
+          where ? `${esc(t(D.skills.usedIn))}: ${where}` : esc(t(D.skills.noUse))
+        }</p>`;
+      })
+    );
+  }
+
+  function setupContact() {
+    const form = document.getElementById("contactForm");
+    if (!form) return;
+    const C = D.contact;
+    const status = document.getElementById("formStatus");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = Object.fromEntries(new FormData(form));
+      if (data._gotcha) return;
+
+      // Sem Formspree configurado: abre o app de e-mail com a mensagem pronta
+      if (!D.profile.formspree) {
+        const subject = encodeURIComponent(`Portfolio · ${data.name}`);
+        const body = encodeURIComponent(`${data.message}\n\n${data.name} <${data.email}>`);
+        window.location.href = `mailto:${D.profile.email}?subject=${subject}&body=${body}`;
+        return;
+      }
+
+      const btn = form.querySelector("button[type=submit]");
+      btn.disabled = true;
+      status.textContent = t(C.sending);
+      try {
+        const res = await fetch(`https://formspree.io/f/${D.profile.formspree}`, {
+          method: "POST",
+          headers: { Accept: "application/json", "Content-Type": "application/json" },
+          body: JSON.stringify({ name: data.name, email: data.email, message: data.message }),
+        });
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        status.textContent = t(C.sent);
+        document.dispatchEvent(new CustomEvent("portfolio:xp", { detail: { id: "contact" } }));
+      } catch (err) {
+        status.textContent = t(C.error);
+      } finally {
+        btn.disabled = false;
+      }
+    });
   }
 
   function footer() {
@@ -299,6 +601,8 @@
     setupSkip();
     setupMenu();
     setupActiveSection();
+    setupSkills();
+    setupContact();
   }
 
   render();

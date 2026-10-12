@@ -136,11 +136,14 @@ main {
 /* ---------- Modo recrutador: "Pular o jogo" ---------- */
 /* Tira a fonte pixel, animações e enfeites. O conteúdo continua igual. */
 
+html.recruiter {
+  --font-pixel: var(--font-body);
+}
+
 html.recruiter h1,
 html.recruiter h2,
 html.recruiter h3,
 html.recruiter .pixel {
-  font-family: var(--font-body);
   letter-spacing: 0;
 }
 

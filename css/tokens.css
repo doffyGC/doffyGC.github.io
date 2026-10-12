@@ -1,16 +1,11 @@
 /* Tokens de design: paleta "Noite de SNES", fontes e medidas. Ver DESIGN.md §3. */
 
+/* Tiny5 só tem um peso: mapeado para 400–700 para o navegador não "engrossar" a fonte artificialmente */
 @font-face {
-  font-family: "Pixelify Sans";
-  font-weight: 400;
+  font-family: "Tiny5";
+  font-weight: 400 700;
   font-display: swap;
-  src: url("../fonts/pixelify-sans-400.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Pixelify Sans";
-  font-weight: 700;
-  font-display: swap;
-  src: url("../fonts/pixelify-sans-700.woff2") format("woff2");
+  src: url("../fonts/tiny5.woff2") format("woff2");
 }
 @font-face {
   font-family: "Atkinson Hyperlegible";
@@ -32,7 +27,7 @@
 }
 
 :root {
-  --font-pixel: "Pixelify Sans", "Courier New", monospace;
+  --font-pixel: "Tiny5", "Courier New", monospace;
   --font-body: "Atkinson Hyperlegible", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
 
@@ -80,4 +75,11 @@
   --on-gold: #fffdf6;
   --shadow: #1b1630;
   --star: #b9ad8f;
+}
+
+/* A Tiny5 desenha números pequenos e quadriculados: números de destaque usam a fonte do corpo */
+.num {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }

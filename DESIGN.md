@@ -43,7 +43,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 
 ### Tipografia
 
-- **Títulos/HUD/botões:** `Pixelify Sans` (OFL, auto-hospedada em `fonts/`).
+- **Títulos/HUD/botões:** `Tiny5` (OFL, auto-hospedada em `fonts/`). A Pixelify Sans foi descartada porque o "c" dela parece um "o" em tamanhos pequenos.
 - **Corpo:** `Atkinson Hyperlegible` (OFL, feita pra legibilidade, o que combina com o projeto de acessibilidade).
 - **Código/números do HUD:** `IBM Plex Mono`.
 
@@ -104,6 +104,8 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 ### Quest em andamento 🔒
 
 - **MundtHub**: gestão de colaboradores (ponto, RH, ausências, auditoria) com detecção de anomalias via IA explicável.
+
+**Repos privados** (aparecem com "🔒 Código privado", sem link): PET-Saúde, Demeter, Multiple Knapsack e ERENO-AI-LAB.
 
 **Fora do site:** repos da DIO, `calculadora`, forks, `agent-guidelines`, `sistema-ingresso-adversarial`.
 
@@ -177,7 +179,8 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 ├── css/
 │   ├── tokens.css        # paleta, fontes, medidas (temas claro/escuro)
 │   ├── base.css          # reset, tipografia, layout, modo recrutador
-│   ├── components.css    # caixa de diálogo, barras, botões, cards de quest
+│   ├── components.css    # caixa de diálogo, barras, botões, tela de título
+│   ├── sections.css      # ficha, skill tree, campanha, raid, quests, grimório, conquistas, contato
 │   └── game.css          # HUD, toasts, NPC, arena, batalha, CRT
 ├── js/
 │   ├── data.js           # TODO o conteúdo, nos 3 idiomas
@@ -219,6 +222,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 - [ ] ID do formulário no Formspree (criar conta grátis).
 - [ ] CV sem telefone (gerar a partir do LaTeX/fonte original, ou redigir o PDF).
 - [ ] Link do Lattes (opcional, depois).
+- [ ] Decidir se torna públicos o ERENO-AI-LAB e outros repos privados (aí eles ganham link).
 - [ ] Revisar a lista final de easter eggs.
 
 ## 11. Roadmap
