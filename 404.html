@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Over · 404</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- O GitHub Pages serve esta página em qualquer caminho, por isso os estilos ficam aqui dentro e os links são absolutos -->
+  <style>
+    @font-face { font-family: "Pixelify Sans"; font-weight: 700; font-display: swap; src: url("/fonts/pixelify-sans-700.woff2") format("woff2"); }
+    :root { --bg: #14112b; --ink: #f4ecd8; --muted: #a99fc9; --gold: #f6c453; --danger: #ff5d7a; --shadow: #0a0818; }
+    @media (prefers-color-scheme: light) { :root { --bg: #f7f1e3; --ink: #1b1630; --muted: #5b5470; --gold: #b07800; --danger: #d6334f; --shadow: #1b1630; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: var(--bg); color: var(--ink); font-family: system-ui, sans-serif; text-align: center; }
+    h1 { font-family: "Pixelify Sans", monospace; font-size: clamp(3rem, 12vw, 6rem); margin: 0; color: var(--danger); text-shadow: 6px 6px 0 var(--shadow); }
+    p { color: var(--muted); font-size: 1.1rem; }
+    .code { font-family: "Pixelify Sans", monospace; color: var(--gold); letter-spacing: .2em; }
+    .actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    a { font-family: "Pixelify Sans", monospace; font-size: 1.2rem; color: var(--ink); text-decoration: none; padding: 8px 4px; }
+    a:hover, a:focus-visible { color: var(--gold); }
+    a:hover::before, a:focus-visible::before { content: "▶ "; }
+    .blink { animation: blink 1s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    @media (prefers-reduced-motion: reduce) { .blink { animation: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="code">ERRO 404</p>
+    <h1>GAME OVER</h1>
+    <p>Esta fase não existe. · This level doesn't exist. · Esta fase no existe.</p>
+    <p class="blink">CONTINUE?</p>
+    <div class="actions">
+      <a href="/">SIM</a>
+      <a href="/en/">YES</a>
+      <a href="/es/">SÍ</a>
+    </div>
+  </main>
+</body>
+</html>

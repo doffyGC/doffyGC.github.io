@@ -1,0 +1,210 @@
+/* HUD, menu de seções, céu estrelado e demais enfeites da camada de jogo. */
+
+/* ---------- HUD ---------- */
+
+.hud {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--hud-h);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: var(--px) solid var(--panel-2);
+}
+
+.hud-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.hud-logo svg {
+  width: 32px;
+  height: 32px;
+  shape-rendering: crispEdges;
+}
+
+.hud-spacer {
+  flex: 1;
+}
+
+.hud-xp {
+  display: grid;
+  grid-template-columns: auto 90px;
+  align-items: center;
+  gap: 0 8px;
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hud-xp .bar {
+  height: 10px;
+}
+
+.hud-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-langs {
+  display: flex;
+  gap: 2px;
+}
+
+.hud-langs .chip {
+  min-width: 36px;
+  padding: 0 6px;
+  font-size: 0.85rem;
+}
+
+/* ---------- Menu de seções (estilo menu de JRPG) ---------- */
+
+.menu-wrap {
+  position: relative;
+}
+
+.menu-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  width: min(320px, calc(100vw - 32px));
+  max-height: calc(100vh - var(--hud-h) - 32px);
+  overflow-y: auto;
+  padding: 14px 10px;
+}
+
+.menu-panel[hidden] {
+  display: none;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-list a {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 4px;
+  padding: 7px 10px;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+.menu-list a::before {
+  content: "▶";
+  font-size: 0.75rem;
+  color: var(--gold);
+  visibility: hidden;
+  padding-top: 3px;
+}
+
+.menu-list a:hover::before,
+.menu-list a:focus-visible::before,
+.menu-list a[aria-current="true"]::before {
+  visibility: visible;
+}
+
+.menu-list a:focus-visible {
+  outline-offset: -2px;
+}
+
+.menu-list .m-game {
+  font-family: var(--font-pixel);
+  font-size: 1.05rem;
+}
+
+.menu-list .m-legend {
+  grid-column: 2;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Céu estrelado da tela de título ---------- */
+
+.sky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, transparent 70%, var(--bg-2));
+}
+
+.star {
+  position: absolute;
+  width: var(--s, 4px);
+  height: var(--s, 4px);
+  background: var(--star);
+  opacity: 0.7;
+  animation: twinkle var(--d, 3s) steps(3) var(--delay, 0s) infinite;
+}
+
+/* Chão em "tiles" no rodapé da tela de título */
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  z-index: -1;
+  background:
+    repeating-linear-gradient(90deg, var(--panel-2) 0 24px, var(--panel) 24px 48px);
+  box-shadow: 0 calc(var(--px) * -1) 0 0 var(--ink);
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.15;
+  }
+}
+
+/* ---------- Responsivo do HUD ---------- */
+
+@media (max-width: 900px) {
+  .hud-xp .xp-label {
+    display: none;
+  }
+  .hud-xp {
+    grid-template-columns: auto 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hud-logo .logo-text,
+  .hud-xp,
+  .skip-label,
+  .menu-label {
+    display: none;
+  }
+  .hud-inner {
+    gap: 6px;
+  }
+  .hud-langs .chip {
+    min-width: 32px;
+    padding: 0 4px;
+  }
+  .hud-tools {
+    gap: 4px;
+  }
+  .chip {
+    min-width: 36px;
+    padding: 0 6px;
+  }
+}
