@@ -29,9 +29,9 @@ window.PORTFOLIO = {
         es: "Soy estudiante de Ingeniería de Software en la UNIPAMPA, en Alegrete (Brasil). Hoy desarrollo software para la unidad de salud de Jaguari como becario de PET-Saúde y, en mis prácticas curriculares, llevé una plataforma de gestión de gincanas al uso real en una escuela.",
       },
       {
-        pt: "Gosto de jogar nas duas pontas: desenvolvimento web full-stack (React, Node.js, NestJS, SvelteKit) e IA aplicada (pipelines RAG, agentes com LLM e machine learning explicável). Trabalho sempre em equipe, com Git Flow e revisão de código, e estou procurando uma vaga de desenvolvedor júnior ou web.",
-        en: "I like to play on both ends: full-stack web development (React, Node.js, NestJS, SvelteKit) and applied AI (RAG pipelines, LLM agents and explainable machine learning). I always work in teams, with Git Flow and code review, and I'm looking for a junior or web developer role.",
-        es: "Me gusta jugar en los dos extremos: desarrollo web full-stack (React, Node.js, NestJS, SvelteKit) e IA aplicada (pipelines RAG, agentes con LLM y machine learning explicable). Siempre trabajo en equipo, con Git Flow y revisión de código, y busco una vacante de desarrollador junior o web.",
+        pt: "Gosto de jogar nas duas pontas: desenvolvimento web full-stack (React, Node.js, NestJS, SvelteKit) e IA aplicada (pipelines RAG, agentes com LLM e machine learning explicável). Trabalho sempre em equipe, com Git Flow e pull requests, e estou procurando uma vaga de desenvolvedor júnior ou web.",
+        en: "I like to play on both ends: full-stack web development (React, Node.js, NestJS, SvelteKit) and applied AI (RAG pipelines, LLM agents and explainable machine learning). I always work in teams, with Git Flow and pull requests, and I'm looking for a junior or web developer role.",
+        es: "Me gusta jugar en los dos extremos: desarrollo web full-stack (React, Node.js, NestJS, SvelteKit) e IA aplicada (pipelines RAG, agentes con LLM y machine learning explicable). Siempre trabajo en equipo, con Git Flow y pull requests, y busco una vacante de desarrollador junior o web.",
       },
     ],
     info: [
@@ -168,7 +168,7 @@ window.PORTFOLIO = {
         bullets: [
           { pt: "Programa de residência de sete meses voltado ao mercado, desenvolvendo um sistema real em equipe.", en: "Seven-month, industry-focused residency program, building a real system as a team.", es: "Programa de residencia de siete meses orientado al mercado, desarrollando un sistema real en equipo." },
           { pt: "Serviços REST em TypeScript (Node.js/Express) com controllers, rotas e serviços separados.", en: "REST services in TypeScript (Node.js/Express) with separate controllers, routes and services.", es: "Servicios REST en TypeScript (Node.js/Express) con controllers, rutas y servicios separados." },
-          { pt: "Git Flow com pull requests revisados pelos pares.", en: "Git Flow with peer-reviewed pull requests.", es: "Git Flow con pull requests revisados por pares." },
+          { pt: "Git Flow com branches por desenvolvedor e pull requests para integrar o trabalho da equipe.", en: "Git Flow with per-developer branches and pull requests to integrate the team's work.", es: "Git Flow con ramas por desarrollador y pull requests para integrar el trabajo del equipo." },
         ],
       },
       {
@@ -196,7 +196,7 @@ window.PORTFOLIO = {
         bullets: [
           { pt: "Implantou na escola a plataforma de gincanas Scavenger Project, levando um sistema de disciplina para uso real por servidores e alunos.", en: "Deployed the Scavenger Project gymkhana platform at the school, taking a course project into real use by staff and students.", es: "Implantó en la escuela la plataforma de gincanas Scavenger Project, llevando un sistema de asignatura al uso real por funcionarios y alumnos." },
           { pt: "Stack completa: React, Node.js/Express e MongoDB Atlas, com rotas protegidas por JWT e e-mails transacionais.", en: "Full stack: React, Node.js/Express and MongoDB Atlas, with JWT-protected routes and transactional e-mails.", es: "Stack completo: React, Node.js/Express y MongoDB Atlas, con rutas protegidas por JWT y correos transaccionales." },
-          { pt: "Terceiro maior contribuidor entre oito desenvolvedores (46 commits).", en: "Third-largest contributor among eight developers (46 commits).", es: "Tercer mayor contribuidor entre ocho desarrolladores (46 commits)." },
+          { pt: "Maior contribuidor de código entre oito desenvolvedores: 70 commits e 23 dos 26 pull requests.", en: "Top code contributor among eight developers: 70 commits and 23 of the 26 pull requests.", es: "Mayor contribuidor de código entre ocho desarrolladores: 70 commits y 23 de los 26 pull requests." },
         ],
       },
     ],
@@ -303,7 +303,7 @@ window.PORTFOLIO = {
         },
         bullets: [
           { pt: "Rotas protegidas por JWT e envio de e-mails transacionais.", en: "JWT-protected routes and transactional e-mails.", es: "Rutas protegidas por JWT y envío de correos transaccionales." },
-          { pt: "Terceiro maior contribuidor (46 commits), sob Git Flow com revisão de código.", en: "Third-largest contributor (46 commits), under Git Flow with code review.", es: "Tercer mayor contribuidor (46 commits), con Git Flow y revisión de código." },
+          { pt: "Maior contribuidor (70 commits e 23 dos 26 PRs), com Git Flow e CI no GitHub Actions.", en: "Top contributor (70 commits and 23 of the 26 PRs), with Git Flow and CI on GitHub Actions.", es: "Mayor contribuidor (70 commits y 23 de los 26 PRs), con Git Flow y CI en GitHub Actions." },
         ],
         repo: "https://github.com/ScavengerProject/ScavengerProject-repo",
         demo: "https://drgincana.vercel.app",
@@ -619,9 +619,9 @@ window.PORTFOLIO = {
     win: { pt: "Vitória! Todos os bugs foram corrigidos.", en: "Victory! All bugs were fixed.", es: "¡Victoria! Todos los bugs fueron corregidos." },
     lose: { pt: "GAME OVER: os bugs foram para produção.", en: "GAME OVER: the bugs reached production.", es: "GAME OVER: los bugs llegaron a producción." },
     outro: {
-      pt: "Na vida real os golpes são os mesmos: testes automatizados, Git Flow com revisão de código e Docker para ambientes reprodutíveis.",
-      en: "In real life the moves are the same: automated tests, Git Flow with code review and Docker for reproducible environments.",
-      es: "En la vida real los golpes son los mismos: pruebas automatizadas, Git Flow con revisión de código y Docker para entornos reproducibles.",
+      pt: "Na vida real os golpes são os mesmos: testes automatizados, Git Flow com pull requests e Docker para ambientes reprodutíveis.",
+      en: "In real life the moves are the same: automated tests, Git Flow with pull requests and Docker for reproducible environments.",
+      es: "En la vida real los golpes son los mismos: pruebas automatizadas, Git Flow con pull requests y Docker para entornos reproducibles.",
     },
     outroLink: { pt: "Ver a skill tree", en: "See the skill tree", es: "Ver el árbol" },
     // Equilibrado por simulação: quem segue as pistas das descrições quase sempre vence; quem joga no aleatório costuma perder
@@ -898,9 +898,9 @@ window.PORTFOLIO = {
       {
         q: { pt: "Ele está disponível para uma vaga?", en: "Is he available for a job?", es: "¿Está disponible para una vacante?" },
         a: {
-          pt: "Sim! Ele procura uma vaga de desenvolvedor júnior ou web. Topa trabalho em equipe, Git Flow e code review (na verdade, ele gosta).",
-          en: "Yes! He's looking for a junior or web developer role. Teamwork, Git Flow and code review are welcome (he actually enjoys them).",
-          es: "¡Sí! Busca una vacante de desarrollador junior o web. Trabajo en equipo, Git Flow y code review son bienvenidos (de hecho, le gustan).",
+          pt: "Sim! Ele procura uma vaga de desenvolvedor júnior ou web. Curte trabalho em equipe, Git Flow e pull requests bem descritos.",
+          en: "Yes! He's looking for a junior or web developer role. He enjoys teamwork, Git Flow and well-described pull requests.",
+          es: "¡Sí! Busca una vacante de desarrollador junior o web. Le gusta el trabajo en equipo, Git Flow y los pull requests bien descritos.",
         },
         link: { href: "#contato", label: { pt: "Recrutar para a party", en: "Recruit to the party", es: "Reclutar para el grupo" } },
       },
