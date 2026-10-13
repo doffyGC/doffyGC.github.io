@@ -66,7 +66,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 | 5 | **Raid: Ecossistema ERENO** | Quest especial com 3 andares (ver §5) |
 | 6 | **Quest Log · Projetos** | Main quests, side quests e quest em andamento (ver §5) |
 | 7 | **Grimório · Pesquisa** | XAI, Cibersegurança, IoT, IA Agêntica, conectados ao Gray-GOOSE e ao ERENO |
-| 8 | **Arena · Minigame** | "Raid na Subestação" (ver §6.4) |
+| 8 | **Arena · Minigame** | Batalha por turnos contra bugs (ver §6.4) |
 | 9 | **Conquistas · Certificados** | Udemy Web (12/2022), Udemy ML & Data Science (12/2023), Nivelação Residência em TIC BRISA (01/2025) |
 | 10 | **Diário de bordo · GitHub** | Atividade recente (pushes agrupados, PRs, issues, branches) e repos atualizados, via API pública do GitHub (sem token, cache de 30 min no `localStorage`). Desde 2025 a API não traz mais as mensagens de commit nos pushes: o diário linka o commit final de cada push |
 | 11 | **Recrutar para a party · Contato** | Formulário Formspree + links (e-mail `guilhermemundt2@gmail.com`, LinkedIn, GitHub). Lattes: adicionar depois |
@@ -130,34 +130,30 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
   "Qual o melhor projeto?", "O que é o ERENO?", "Como falo com ele?" etc. As respostas linkam as seções.
 - Texto aparece letra a letra (máquina de escrever), e dá pra pular com clique/Enter.
 
-### 6.4 Minigame: "Raid na Subestação" (Arena)
+### 6.4 Minigame da Arena: Batalha contra bugs
 
-- O visitante é o **Red Team** e precisa passar um ataque GOOSE pelo IDS.
-- A cada rodada, distribui um **orçamento** entre parâmetros: temporização, campo adulterado, intensidade, número de mensagens.
-- O IDS avalia e responde com **barras estilo SHAP** mostrando qual feature denunciou o ataque.
-- O IDS "aprende" entre rodadas (as regras endurecem). São 3 rodadas, com pontuação e recorde salvo no navegador.
-- Fim: texto curto conectando o jogo à pesquisa real (ERENO AI, XAI).
-- Controles por mouse, toque e teclado.
+- Batalha por turnos estilo JRPG contra três bugs, em sequência: *Memory Leak*, *Merge Conflict* e o chefe
+  *Deploy na sexta às 18h*. HP e MP passam de um inimigo para o próximo (com uma pequena cura entre eles).
+- Golpes da skill tree: `git commit` (básico), `pytest`, `git rebase`, `docker rollback` e ☕ Café (cura, 2 usos).
+- Cada bug tem uma **fraqueza** (dano ×1,5). As descrições dos golpes dão a pista; a fraqueza aparece depois de descoberta.
+- Equilibrado por simulação: quem segue as pistas quase sempre vence; quem joga no aleatório costuma perder.
+- Recorde (menos turnos) salvo no navegador; vencer dá XP e a conquista "Debugger".
+- Controles por mouse, toque e teclado (setas navegam entre os golpes).
+- Substituiu a ideia inicial de um minigame sobre ataques ao IDS.
 
-### 6.5 Easter egg: Batalha contra bugs
+### 6.5 Segredos
 
-- Batalha por turnos estilo JRPG. Inimigos: *Memory Leak*, *Merge Conflict*, *Undefined is not a function*,
-  *Deploy na sexta às 18h* (chefe). Os golpes vêm da skill tree (ex.: `git rebase`, `docker compose up`, `pytest`).
-- Escondida: aparece por um gatilho secreto (ver §6.6).
+- **Konami code** (↑↑↓↓←→←→BA): modo CRT (scanlines) e skin dourada no sprite.
+- Comentários no HTML e uma mensagem no console do DevTools com um comando secreto pra quem inspeciona.
+- Um bug pixel escondido no rodapé: clicar nele algumas vezes "corrige" o bug.
+- Tudo inofensivo e leve; cada segredo vale XP e a conquista "Caçador(a) de segredos".
 
-### 6.6 Segredos (carta branca, mas confirmar a lista final com o Guilherme)
-
-- **Konami code** (↑↑↓↓←→←→BA): modo CRT (scanlines + leve curvatura) e skin dourada no sprite.
-- Comentários secretos no HTML e uma mensagem no console do DevTools pra quem inspeciona.
-- Gatilho da Batalha contra bugs (ex.: clicar várias vezes num inseto pixel escondido no rodapé, ou digitar `bug`).
-- Tudo inofensivo e leve; cada segredo vale uma conquista.
-
-### 6.7 Som
+### 6.6 Som
 
 - Efeitos chiptune gerados via Web Audio (sem arquivos): clique, conquista e level up.
 - **Desligados por padrão**, com botão 🔇/🔊 no HUD e preferência salva.
 
-### 6.8 Modo recrutador: "⏭ Pular o jogo"
+### 6.7 Modo recrutador: "⏭ Pular o jogo"
 
 - Desliga a fonte pixel, as animações, o HUD de XP, os toasts e os sons, e mostra o conteúdo limpo, quase um CV.
 - Ativa sozinho com `prefers-reduced-motion: reduce`; dá pra voltar pro modo jogo.
@@ -188,8 +184,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 │   ├── app.js            # renderiza as seções, navegação, tema, idioma
 │   ├── hud.js            # XP, conquistas, toasts, sons
 │   ├── npc.js            # UniBot
-│   ├── arena.js          # minigame Raid na Subestação
-│   ├── battle.js         # batalha contra bugs
+│   ├── battle.js         # minigame da Arena: batalha contra bugs
 │   ├── secrets.js        # Konami, console, gatilhos
 │   └── github.js         # Diário de bordo
 ├── img/                  # sprites SVG, og-image, foto (placeholder)
@@ -227,7 +222,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 
 ## 11. Roadmap
 
-- **v1.0:** tudo das seções 4 a 8 (incluindo Arena, Batalha, NPC, XP, sons, modo recrutador, PT/EN/ES, Formspree).
+- **v1.0:** tudo das seções 4 a 8 (incluindo Arena, NPC, XP, sons, modo recrutador, PT/EN/ES, Formspree).
 - **v1.1:** GoatCounter, ajustes finos depois do feedback.
 - **Ordem de construção sugerida:** tokens + base + tela de título → seções de conteúdo → HUD/XP/conquistas →
-  UniBot → Arena → Batalha + segredos → i18n EN/ES → SEO/deploy.
+  UniBot → Arena (batalha) → segredos → i18n EN/ES → SEO/deploy.

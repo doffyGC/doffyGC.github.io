@@ -402,6 +402,7 @@
     raid,
     quests: questLog,
     grimorio: grimoire,
+    arena: () => `<div class="battle-wrap" id="battleGame"></div>`,
     conquistas: achievements,
     diario: diary,
     contato: contact,
