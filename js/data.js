@@ -701,6 +701,24 @@ window.PORTFOLIO = {
     ],
   },
 
+  // ---------- Segredos ----------
+  secrets: {
+    crtOn: { pt: "Modo CRT ativado! Skin dourada desbloqueada.", en: "CRT mode on! Golden skin unlocked.", es: "¡Modo CRT activado! Skin dorada desbloqueada." },
+    crtOff: { pt: "Modo CRT desligado.", en: "CRT mode off.", es: "Modo CRT desactivado." },
+    konami: { pt: "Código Konami", en: "Konami code", es: "Código Konami" },
+    bugLabel: { pt: "Um bug? Clique para corrigir", en: "A bug? Click to fix it", es: "¿Un bug? Haz clic para corregirlo" },
+    bugFixed: { pt: "Bug do rodapé corrigido! Ninguém ia notar, mas você notou.", en: "Footer bug fixed! Nobody would notice, but you did.", es: "¡Bug del pie corregido! Nadie lo iba a notar, pero tú sí." },
+    bugTitle: { pt: "Bug corrigido", en: "Bug fixed", es: "Bug corregido" },
+    consoleTitle: { pt: "Console secreto", en: "Secret console", es: "Consola secreta" },
+    consoleHi: {
+      pt: "Olá, dev curioso(a)! Já que você abriu o DevTools: este site é HTML, CSS e JS puro, sem framework. Digite gm.secret() para pegar uma conquista.",
+      en: "Hi, curious dev! Since you opened DevTools: this site is plain HTML, CSS and JS, no framework. Type gm.secret() to grab an achievement.",
+      es: "¡Hola, dev curioso(a)! Ya que abriste DevTools: este sitio es HTML, CSS y JS puro, sin framework. Escribe gm.secret() para llevarte un logro.",
+    },
+    consoleReward: { pt: "🗝 Segredo encontrado! Agora me chama para uma entrevista: guilhermemundt2@gmail.com", en: "🗝 Secret found! Now invite me to an interview: guilhermemundt2@gmail.com", es: "🗝 ¡Secreto encontrado! Ahora invítame a una entrevista: guilhermemundt2@gmail.com" },
+    consoleAgain: { pt: "Esse segredo você já pegou. 😉", en: "You already got this one. 😉", es: "Este secreto ya lo tienes. 😉" },
+  },
+
   // ---------- NPC: UniBot ----------
   npc: {
     title: "Pampa Live Messenger",

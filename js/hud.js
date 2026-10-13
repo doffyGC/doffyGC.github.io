@@ -68,6 +68,8 @@
 
   function toast(icon, title, text) {
     if (!gameOn()) return;
+    // No máximo 3 na tela: o mais antigo sai
+    while (toasts.children.length >= 3) toasts.firstElementChild.remove();
     const el = document.createElement("div");
     el.className = "dialog toast";
     el.innerHTML = `<span class="toast-icon" aria-hidden="true">${esc(icon)}</span>

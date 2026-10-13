@@ -57,7 +57,8 @@
     return `<svg class="${className}" viewBox="${vb}" shape-rendering="crispEdges" ${label} xmlns="http://www.w3.org/2000/svg">${rects(map, palette)}</svg>`;
   }
 
-  const svg = ({ skin = "default", ...opts } = {}) => draw(MAP, SKINS[skin] || SKINS.default, opts);
+  // Sem skin explícita, usa a skin atual (window.Sprite.skin), que um segredo pode trocar
+  const svg = ({ skin, ...opts } = {}) => draw(MAP, SKINS[skin || window.Sprite.skin] || SKINS.default, opts);
 
   window.Sprite = {
     // Corpo inteiro
@@ -65,6 +66,7 @@
     // Só a cabeça (logo do HUD, favicon)
     head: (opts = {}) => svg({ ...opts, viewBox: "2 0 12 11" }),
     skins: Object.keys(SKINS),
+    skin: "default",
     // Desenha qualquer mapa de caracteres (usado pelo UniBot e pelos inimigos da batalha)
     draw,
   };
