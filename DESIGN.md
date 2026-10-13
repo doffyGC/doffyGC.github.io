@@ -68,7 +68,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 | 7 | **Grimório · Pesquisa** | XAI, Cibersegurança, IoT, IA Agêntica, conectados ao Gray-GOOSE e ao ERENO |
 | 8 | **Arena · Minigame** | "Raid na Subestação" (ver §6.4) |
 | 9 | **Conquistas · Certificados** | Udemy Web (12/2022), Udemy ML & Data Science (12/2023), Nivelação Residência em TIC BRISA (01/2025) |
-| 10 | **Diário de bordo · GitHub** | Últimos commits/repos via API pública do GitHub (sem token, cache de 30 min no `localStorage`) |
+| 10 | **Diário de bordo · GitHub** | Atividade recente (pushes agrupados, PRs, issues, branches) e repos atualizados, via API pública do GitHub (sem token, cache de 30 min no `localStorage`). Desde 2025 a API não traz mais as mensagens de commit nos pushes: o diário linka o commit final de cada push |
 | 11 | **Recrutar para a party · Contato** | Formulário Formspree + links (e-mail `guilhermemundt2@gmail.com`, LinkedIn, GitHub). Lattes: adicionar depois |
 | — | **Rodapé** | Créditos, "feito à mão sem framework", dica sutil de easter egg |
 

@@ -62,7 +62,7 @@
     const langs = D.languages
       .map((l) => {
         const current = l.code === LANG;
-        return `<a class="chip" href="${BASE}${l.path || "./"}" hreflang="${l.code}" lang="${l.code}" title="${esc(l.name)}" ${current ? 'aria-current="true"' : ""}>${l.label}</a>`;
+        return `<a class="chip" href="${BASE}${l.path || "./"}" hreflang="${l.code}" lang="${l.code}" title="${esc(l.name)}" ${current ? 'aria-current="true"' : 'data-xp="lang"'}>${l.label}</a>`;
       })
       .join("");
 
@@ -87,10 +87,11 @@
           </nav>
         </div>
         <div class="hud-spacer"></div>
-        <div class="hud-xp game-only" title="${esc(t(D.ui.visitorXp))}">
-          <span class="lv" id="visitorLv">Lv <span class="num">1</span></span>
-          <div class="bar" id="visitorXp" style="--fill: 0%"><span class="sr-only">0 XP</span></div>
-        </div>
+        <a class="hud-xp game-only" href="#suas-conquistas" title="${esc(t(D.game.openPanel))}">
+          <span class="lv">Lv <span class="num" id="visitorLv">1</span></span>
+          <span class="bar" id="visitorXp" style="--fill: 0%"></span>
+          <span class="sr-only" id="visitorXpText">0 XP</span>
+        </a>
         <div class="hud-tools">
           <div class="hud-langs" role="group" aria-label="${esc(t(D.ui.language))}">${langs}</div>
           <button class="chip" id="themeBtn"></button>
@@ -132,7 +133,7 @@
               <p>${esc(t(T.tagline))}</p>
             </div>
             <div class="title-actions">
-              <a class="btn press-start" href="#${D.sections[0].id}"><span class="cursor" aria-hidden="true">▶</span> ${esc(t(T.start))}</a>
+              <a class="btn press-start" href="#${D.sections[0].id}" data-xp="start"><span class="cursor" aria-hidden="true">▶</span> ${esc(t(T.start))}</a>
               ${saveBtn}
             </div>
           </div>
@@ -340,7 +341,22 @@
           </li>`
           )
           .join("")}
-      </ul>`;
+      </ul>
+      <div class="visitor-ach game-only" id="suas-conquistas">
+        <h3 class="tier-title">${esc(t(D.game.yours))}</h3>
+        <p class="section-intro">${esc(t(D.game.yoursHint))}</p>
+        <ul class="ach-grid" id="achList"></ul>
+        <button class="chip ach-reset" type="button" id="achReset">↺ ${esc(t(D.game.reset))}</button>
+      </div>`;
+  }
+
+  function diary() {
+    const G = D.diary;
+    return `
+      <p class="section-intro">${esc(t(G.intro))}</p>
+      <div class="diary" id="diary" aria-live="polite" aria-busy="true">
+        <div class="dialog"><p class="muted">${esc(t(G.loading))}</p></div>
+      </div>`;
   }
 
   function contact() {
@@ -387,6 +403,7 @@
     quests: questLog,
     grimorio: grimoire,
     conquistas: achievements,
+    diario: diary,
     contato: contact,
   };
 

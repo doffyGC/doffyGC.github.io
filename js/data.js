@@ -547,6 +547,65 @@ window.PORTFOLIO = {
     },
   },
 
+  // ---------- Camada de jogo: XP e conquistas do visitante ----------
+  game: {
+    xpPerLevel: 100,
+    // Quanto vale cada tipo de ação (cada ação só conta uma vez)
+    xp: { visit: 10, quest: 8, skill: 3, cv: 30, contact: 60, theme: 5, sound: 5, lang: 10, secret: 40, start: 5 },
+    levelUp: { pt: "Level up!", en: "Level up!", es: "¡Subiste de nivel!" },
+    levelUpText: { pt: "Você chegou ao Lv", en: "You reached Lv", es: "Llegaste al Lv" },
+    unlocked: { pt: "Conquista desbloqueada", en: "Achievement unlocked", es: "Logro desbloqueado" },
+    yours: { pt: "Suas conquistas nesta visita", en: "Your achievements on this visit", es: "Tus logros en esta visita" },
+    yoursHint: { pt: "Explore o site para desbloquear. O progresso fica salvo no seu navegador.", en: "Explore the site to unlock them. Progress is saved in your browser.", es: "Explora el sitio para desbloquearlos. El progreso se guarda en tu navegador." },
+    locked: { pt: "???", en: "???", es: "???" },
+    reset: { pt: "Recomeçar progresso", en: "Reset progress", es: "Reiniciar progreso" },
+    openPanel: { pt: "Ver suas conquistas", en: "See your achievements", es: "Ver tus logros" },
+    achievements: [
+      { id: "start", icon: "▶", name: { pt: "Press Start", en: "Press Start", es: "Press Start" }, desc: { pt: "Começou a aventura.", en: "Started the adventure.", es: "Empezaste la aventura." } },
+      { id: "explorer", icon: "🗺", name: { pt: "Explorador(a)", en: "Explorer", es: "Explorador(a)" }, desc: { pt: "Visitou todas as seções.", en: "Visited every section.", es: "Visitaste todas las secciones." } },
+      { id: "reader", icon: "📜", name: { pt: "Leitor(a) de quests", en: "Quest reader", es: "Lector(a) de misiones" }, desc: { pt: "Abriu os detalhes de 3 quests.", en: "Opened the details of 3 quests.", es: "Abriste los detalles de 3 misiones." } },
+      { id: "scout", icon: "🔍", name: { pt: "Olheiro(a) de skills", en: "Skill scout", es: "Ojeador(a) de habilidades" }, desc: { pt: "Inspecionou 5 skills.", en: "Inspected 5 skills.", es: "Inspeccionaste 5 habilidades." } },
+      { id: "save", icon: "💾", name: { pt: "Save file", en: "Save file", es: "Save file" }, desc: { pt: "Baixou o CV.", en: "Downloaded the CV.", es: "Descargaste el CV." } },
+      { id: "party", icon: "🤝", name: { pt: "Convite para a party", en: "Party invite", es: "Invitación al grupo" }, desc: { pt: "Enviou uma mensagem.", en: "Sent a message.", es: "Enviaste un mensaje." } },
+      { id: "theme", icon: "🌗", name: { pt: "Dia e noite", en: "Day and night", es: "Día y noche" }, desc: { pt: "Trocou o tema.", en: "Switched the theme.", es: "Cambiaste el tema." } },
+      { id: "chiptune", icon: "🔊", name: { pt: "Chiptune", en: "Chiptune", es: "Chiptune" }, desc: { pt: "Ligou o som.", en: "Turned the sound on.", es: "Activaste el sonido." } },
+      { id: "polyglot", icon: "🌐", name: { pt: "Poliglota", en: "Polyglot", es: "Políglota" }, desc: { pt: "Trocou de idioma.", en: "Switched languages.", es: "Cambiaste de idioma." } },
+      { id: "lv5", icon: "⭐", name: { pt: "Veterano(a)", en: "Veteran", es: "Veterano(a)" }, desc: { pt: "Chegou ao Lv 5.", en: "Reached Lv 5.", es: "Llegaste al Lv 5." } },
+      { id: "secret", icon: "🗝", secret: true, name: { pt: "Caçador(a) de segredos", en: "Secret hunter", es: "Cazador(a) de secretos" }, desc: { pt: "Achou um segredo escondido.", en: "Found a hidden secret.", es: "Encontraste un secreto escondido." } },
+    ],
+  },
+
+  // ---------- Diário de bordo (GitHub) ----------
+  diary: {
+    user: "doffyGC",
+    intro: { pt: "O que eu andei commitando nos repositórios públicos, direto da API do GitHub.", en: "What I've been committing to public repositories, straight from the GitHub API.", es: "Lo que he estado commiteando en repositorios públicos, directo desde la API de GitHub." },
+    loading: { pt: "Carregando o diário…", en: "Loading the logbook…", es: "Cargando la bitácora…" },
+    error: { pt: "Não deu para carregar agora. Veja direto no GitHub:", en: "Couldn't load it right now. See it on GitHub:", es: "No se pudo cargar ahora. Míralo en GitHub:" },
+    empty: { pt: "Nenhuma atividade pública recente.", en: "No recent public activity.", es: "Sin actividad pública reciente." },
+    recentCommits: { pt: "Atividade recente", en: "Recent activity", es: "Actividad reciente" },
+    // Rótulos de cada tipo de evento da API ({n} = quantidade)
+    events: {
+      push: { pt: "push em", en: "pushed to", es: "push en" },
+      pushes: { pt: "{n} pushes em", en: "{n} pushes to", es: "{n} pushes en" },
+      prOpened: { pt: "abriu o PR", en: "opened PR", es: "abrió el PR" },
+      prClosed: { pt: "fechou o PR", en: "closed PR", es: "cerró el PR" },
+      issueOpened: { pt: "abriu a issue", en: "opened issue", es: "abrió la issue" },
+      issueClosed: { pt: "fechou a issue", en: "closed issue", es: "cerró la issue" },
+      branch: { pt: "criou a branch", en: "created branch", es: "creó la rama" },
+      repo: { pt: "criou o repositório", en: "created repository", es: "creó el repositorio" },
+      public: { pt: "tornou público", en: "made public", es: "hizo público" },
+      star: { pt: "deu estrela em", en: "starred", es: "dio estrella a" },
+      in: { pt: "em", en: "in", es: "en" },
+    },
+    recentRepos: { pt: "Repos atualizados", en: "Updated repos", es: "Repos actualizados" },
+    seeAll: { pt: "Ver perfil no GitHub", en: "See GitHub profile", es: "Ver perfil en GitHub" },
+    ago: {
+      pt: { now: "agora", m: "min", h: "h", d: "d", prefix: "há ", suffix: "" },
+      en: { now: "now", m: "min", h: "h", d: "d", prefix: "", suffix: " ago" },
+      es: { now: "ahora", m: "min", h: "h", d: "d", prefix: "hace ", suffix: "" },
+    },
+  },
+
   languages: [
     { code: "pt", label: "PT", name: "Português", path: "" },
     { code: "en", label: "EN", name: "English", path: "en/" },
