@@ -232,6 +232,8 @@ window.PORTFOLIO = {
           { pt: "Upload de arquivos, download do dataset gerado, persistência no Firebase Realtime Database e deploy do front-end.", en: "File upload, generated-dataset download, Firebase Realtime Database persistence and front-end deployment.", es: "Carga de archivos, descarga del dataset generado, persistencia en Firebase Realtime Database y despliegue del front-end." },
         ],
         links: [{ label: "sequincozes/ereno-2.0 · dev-guilherme", url: "https://github.com/sequincozes/ereno-2.0/tree/dev-guilherme" }],
+        image: "img/projects/ereno2.webp",
+        alt: { pt: "Tela de configuração do fluxo GOOSE no front-end do ERENO 2.0", en: "GOOSE flow configuration screen in the ERENO 2.0 front end", es: "Pantalla de configuración del flujo GOOSE en el front-end de ERENO 2.0" },
       },
       {
         id: "erenoai",
@@ -283,6 +285,8 @@ window.PORTFOLIO = {
           { pt: "Interface em React + Vite + TypeScript e testes com Pytest.", en: "React + Vite + TypeScript interface and Pytest tests.", es: "Interfaz en React + Vite + TypeScript y pruebas con Pytest." },
         ],
         repo: "https://github.com/doffyGC/UniBot",
+        image: "img/projects/unibot.webp",
+        alt: { pt: "Lista de contatos do Pampa Live Messenger: cursos e serviços da UNIPAMPA como contatos de chat", en: "Pampa Live Messenger contact list: UNIPAMPA courses and services as chat contacts", es: "Lista de contactos de Pampa Live Messenger: carreras y servicios de la UNIPAMPA como contactos de chat" },
       },
       {
         id: "scavenger",
@@ -303,6 +307,8 @@ window.PORTFOLIO = {
         ],
         repo: "https://github.com/ScavengerProject/ScavengerProject-repo",
         demo: "https://drgincana.vercel.app",
+        image: "img/projects/scavenger.webp",
+        alt: { pt: "Painel do administrador do Scavenger Project com provas, equipes e ranking", en: "Scavenger Project admin dashboard with challenges, teams and ranking", es: "Panel del administrador de Scavenger Project con pruebas, equipos y ranking" },
       },
       {
         id: "petsaude",
@@ -355,6 +361,8 @@ window.PORTFOLIO = {
           es: "Pipeline bronze/silver/gold sobre 2.000 canciones de Spotify (2000–2019) y un dashboard Streamlit que responde qué caracteriza a un hit.",
         },
         repo: "https://github.com/doffyGC/dashboard-icd",
+        image: "img/projects/hit.webp",
+        alt: { pt: "Visão geral do dashboard Streamlit com os indicadores do catálogo de músicas", en: "Streamlit dashboard overview with the music catalog indicators", es: "Vista general del dashboard Streamlit con los indicadores del catálogo de canciones" },
       },
       {
         id: "demeter",
@@ -397,6 +405,9 @@ window.PORTFOLIO = {
           es: "Material didáctico sobre accesibilidad web, con simulador de lector de pantalla y verificador de contraste.",
         },
         repo: "https://github.com/doffyGC/Recurso-Educacional-Aberto",
+        demo: "https://doffygc.github.io/Recurso-Educacional-Aberto/",
+        image: "img/projects/rea.webp",
+        alt: { pt: "Página inicial do recurso Documentos Digitais Acessíveis", en: "Home page of the Accessible Digital Documents resource", es: "Página inicial del recurso Documentos Digitales Accesibles" },
       },
       {
         id: "knapsack",
@@ -535,6 +546,8 @@ window.PORTFOLIO = {
     playGame: { pt: "Modo jogo", en: "Game mode", es: "Modo juego" },
     skipGameHint: { pt: "Mostra o conteúdo sem animações nem elementos de jogo", en: "Shows the content without animations or game elements", es: "Muestra el contenido sin animaciones ni elementos de juego" },
     visitorXp: { pt: "Sua XP", en: "Your XP", es: "Tu XP" },
+    zoom: { pt: "Ampliar imagem", en: "Enlarge image", es: "Ampliar imagen" },
+    close: { pt: "Fechar", en: "Close", es: "Cerrar" },
     wip: {
       pt: "<strong>🚧 Área em construção.</strong> Volte no próximo patch!",
       en: "<strong>🚧 Under construction.</strong> Check back next patch!",

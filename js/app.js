@@ -259,6 +259,7 @@
           .map(
             (f, i) => `
           <li class="dialog floor" id="raid-${f.id}">
+            ${shot(f)}
             <p class="floor-n pixel">${esc(t(R.floor))} ${i + 1}</p>
             <h3>${esc(f.title)} <span class="sub">${esc(t(f.subtitle))}</span></h3>
             ${tags(f.stack)}
@@ -269,6 +270,14 @@
           .join("")}
       </ol>`;
   }
+
+  // Print do projeto; o clique abre a imagem ampliada (ver setupLightbox)
+  const shot = (item) =>
+    item.image
+      ? `<button type="button" class="shot" data-zoom="${BASE}${esc(item.image)}" aria-label="${esc(t(D.ui.zoom))}: ${esc(t(item.alt))}">
+          <img src="${BASE}${esc(item.image)}" alt="${esc(t(item.alt))}" width="1200" height="675" loading="lazy" decoding="async">
+        </button>`
+      : "";
 
   function questCard(q) {
     const Q = D.quests;
@@ -287,6 +296,7 @@
       : "";
     return `
       <article class="dialog quest quest-${q.tier}" id="quest-${q.id}">
+        ${shot(q)}
         <p class="quest-top"><span class="stars" aria-hidden="true">${stars}</span><span>${esc(q.period)}</span></p>
         <h4>${esc(t(q.title))}</h4>
         <p class="quest-sub">${esc(t(q.subtitle))}</p>
@@ -420,6 +430,25 @@
           ${body}
         </div>
       </section>`;
+  }
+
+  function setupLightbox() {
+    const box = document.createElement("dialog");
+    box.className = "dialog lightbox";
+    box.innerHTML = `<button type="button" class="chip lightbox-close" aria-label="${esc(t(D.ui.close))}">✕</button><img alt="">`;
+    document.body.appendChild(box);
+    const img = box.querySelector("img");
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-zoom]");
+      if (!btn) return;
+      img.src = btn.dataset.zoom;
+      img.alt = btn.querySelector("img")?.alt || "";
+      box.showModal();
+    });
+    // Fecha no botão ou clicando fora da imagem
+    box.addEventListener("click", (e) => {
+      if (e.target === box || e.target.closest(".lightbox-close")) box.close();
+    });
   }
 
   function setupSkills() {
@@ -621,6 +650,7 @@
     setupActiveSection();
     setupSkills();
     setupContact();
+    setupLightbox();
   }
 
   render();
