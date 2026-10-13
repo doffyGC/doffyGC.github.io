@@ -21,4 +21,25 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/"/>
     <lastmod>2026-10-12</lastmod>
   </url>
+  <url>
+    <loc>https://doffygc.github.io/quests/scavenger/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://doffygc.github.io/quests/scavenger/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://doffygc.github.io/en/quests/scavenger/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/quests/scavenger/"/>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  <url>
+    <loc>https://doffygc.github.io/en/quests/scavenger/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://doffygc.github.io/quests/scavenger/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://doffygc.github.io/en/quests/scavenger/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/quests/scavenger/"/>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  <url>
+    <loc>https://doffygc.github.io/es/quests/scavenger/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://doffygc.github.io/quests/scavenger/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://doffygc.github.io/en/quests/scavenger/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/quests/scavenger/"/>
+    <lastmod>2026-10-13</lastmod>
+  </url>
 </urlset>

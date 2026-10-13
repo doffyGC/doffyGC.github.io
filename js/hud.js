@@ -243,6 +243,16 @@
 
   paint();
   renderList();
+  // Estudo de caso: chegar ao fim do relatório vale XP e a conquista "lore"
+  const caseEnd = root.dataset.page === "case" && document.querySelector(".case-content > .btn");
+  if (caseEnd && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((en) => en.isIntersecting)) return;
+      io.disconnect();
+      if (award(`case:${root.dataset.case}`, "case")) unlock("lore");
+    });
+    io.observe(caseEnd);
+  }
   watchSections();
   watchClicks();
   flushQueue();

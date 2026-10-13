@@ -564,7 +564,7 @@ window.PORTFOLIO = {
   game: {
     xpPerLevel: 100,
     // Quanto vale cada tipo de ação (cada ação só conta uma vez)
-    xp: { visit: 10, quest: 8, skill: 3, cv: 30, contact: 60, theme: 5, sound: 5, lang: 10, secret: 40, start: 5, npc: 6, battle: 50 },
+    xp: { visit: 10, quest: 8, skill: 3, cv: 30, contact: 60, theme: 5, sound: 5, lang: 10, secret: 40, start: 5, npc: 6, battle: 50, case: 25 },
     levelUp: { pt: "Level up!", en: "Level up!", es: "¡Subiste de nivel!" },
     levelUpText: { pt: "Você chegou ao Lv", en: "You reached Lv", es: "Llegaste al Lv" },
     unlocked: { pt: "Conquista desbloqueada", en: "Achievement unlocked", es: "Logro desbloqueado" },
@@ -584,6 +584,7 @@ window.PORTFOLIO = {
       { id: "chiptune", icon: "🔊", name: { pt: "Chiptune", en: "Chiptune", es: "Chiptune" }, desc: { pt: "Ligou o som.", en: "Turned the sound on.", es: "Activaste el sonido." } },
       { id: "polyglot", icon: "🌐", name: { pt: "Poliglota", en: "Polyglot", es: "Políglota" }, desc: { pt: "Trocou de idioma.", en: "Switched languages.", es: "Cambiaste de idioma." } },
       { id: "npc", icon: "💬", name: { pt: "Papo com o UniBot", en: "Chat with UniBot", es: "Charla con UniBot" }, desc: { pt: "Fez 3 perguntas ao UniBot.", en: "Asked UniBot 3 questions.", es: "Le hiciste 3 preguntas a UniBot." } },
+      { id: "lore", icon: "📖", name: { pt: "Leitor(a) de relatórios", en: "Lore reader", es: "Lector(a) de informes" }, desc: { pt: "Leu um estudo de caso inteiro.", en: "Read a full case study.", es: "Leíste un estudio de caso completo." } },
       { id: "debugger", icon: "🐞", name: { pt: "Debugger", en: "Debugger", es: "Debugger" }, desc: { pt: "Venceu os três bugs da Arena.", en: "Beat all three bugs in the Arena.", es: "Venciste los tres bugs de la Arena." } },
       { id: "lv5", icon: "⭐", name: { pt: "Veterano(a)", en: "Veteran", es: "Veterano(a)" }, desc: { pt: "Chegou ao Lv 5.", en: "Reached Lv 5.", es: "Llegaste al Lv 5." } },
       { id: "secret", icon: "🗝", secret: true, name: { pt: "Caçador(a) de segredos", en: "Secret hunter", es: "Cazador(a) de secretos" }, desc: { pt: "Achou um segredo escondido.", en: "Found a hidden secret.", es: "Encontraste un secreto escondido." } },
@@ -712,6 +713,143 @@ window.PORTFOLIO = {
         ],
       },
     ],
+  },
+
+  // ---------- Estudos de caso (textos fixos da página) ----------
+  caseUi: {
+    open: { pt: "Estudo de caso", en: "Case study", es: "Estudio de caso" },
+    kicker: { pt: "Relatório da missão", en: "Mission report", es: "Informe de la misión" },
+    back: { pt: "Voltar ao Quest Log", en: "Back to the Quest Log", es: "Volver al registro" },
+    toc: { pt: "Nesta missão", en: "In this mission", es: "En esta misión" },
+  },
+
+  // ---------- Estudos de caso (conteúdo) ----------
+  // Fatos verificados no GitHub (ScavengerProject-repo e ScavengerProject-doc) em 13/10/2026
+  cases: {
+    scavenger: {
+      summary: {
+        pt: "Uma plataforma full-stack que organiza uma gincana escolar de ponta a ponta (equipes, provas, resultados, penalidades e notificações) e que eu levei de projeto de disciplina para uso real numa escola, durante o estágio.",
+        en: "A full-stack platform that runs a school gymkhana end to end (teams, challenges, results, penalties and notifications), which I took from a course project into real use at a school during my internship.",
+        es: "Una plataforma full-stack que organiza una gincana escolar de principio a fin (equipos, pruebas, resultados, penalizaciones y notificaciones) y que llevé de proyecto de asignatura al uso real en una escuela, durante mis prácticas.",
+      },
+      facts: [
+        { k: { pt: "Período", en: "Period", es: "Período" }, v: { pt: "08/2025 — 09/2026 · em produção desde 03/2026", en: "08/2025 — 09/2026 · in production since 03/2026", es: "08/2025 — 09/2026 · en producción desde 03/2026" } },
+        { k: { pt: "Papel", en: "Role", es: "Rol" }, v: { pt: "Dev full-stack · maior contribuidor", en: "Full-stack dev · top contributor", es: "Dev full-stack · mayor contribuidor" } },
+        { k: { pt: "Party", en: "Party", es: "Grupo" }, v: { pt: "8 desenvolvedores", en: "8 developers", es: "8 desarrolladores" } },
+        { k: { pt: "Onde roda", en: "Runs on", es: "Dónde corre" }, v: "Vercel · Render · MongoDB Atlas" },
+      ],
+      stats: [
+        { n: "70", label: { pt: "commits meus", en: "of my commits", es: "commits míos" } },
+        { n: "23/26", label: { pt: "PRs abertos por mim", en: "PRs I opened", es: "PRs abiertos por mí" } },
+        { n: "20", label: { pt: "modelos de dados", en: "data models", es: "modelos de datos" } },
+        { n: "16", label: { pt: "deploys em produção", en: "production deploys", es: "deploys en producción" } },
+      ],
+      sections: [
+        {
+          id: "briefing",
+          icon: "🗺",
+          title: { pt: "Briefing: o problema", en: "Briefing: the problem", es: "Briefing: el problema" },
+          body: [
+            { p: { pt: "Uma gincana escolar envolve várias equipes, provas com regras próprias (quem pode participar, quantas vagas, quando começa), pontuação, penalidades e muita comunicação. Normalmente tudo isso vive em planilhas e grupos de mensagem, e quase sempre alguém fica sem saber o que está acontecendo.", en: "A school gymkhana involves several teams, challenges with their own rules (who can take part, how many spots, when they start), scoring, penalties and a lot of communication. Usually all of that lives in spreadsheets and chat groups, and someone is almost always left out of the loop.", es: "Una gincana escolar involucra varios equipos, pruebas con reglas propias (quién puede participar, cuántos cupos, cuándo empiezan), puntuación, penalizaciones y mucha comunicación. Normalmente todo eso vive en planillas y grupos de mensajes, y casi siempre alguien se queda sin saber qué pasa." } },
+            { p: { pt: "A missão era um sistema em que cada pessoa acompanha a gincana em tempo real, com o que faz sentido para o seu perfil:", en: "The mission was a system where everyone follows the gymkhana in real time, seeing what makes sense for their role:", es: "La misión era un sistema en el que cada persona sigue la gincana en tiempo real, con lo que tiene sentido para su perfil:" } },
+            {
+              list: [
+                { pt: "Administração da escola: cria gincanas, equipes e provas e lança resultados.", en: "School administration: creates gymkhanas, teams and challenges, and posts results.", es: "Administración de la escuela: crea gincanas, equipos y pruebas y publica resultados." },
+                { pt: "Professores e coordenadores de equipe: definem quem participa de cada prova, pedem empréstimo de participantes e dão feedback.", en: "Teachers and team coordinators: choose who takes part in each challenge, request participant loans and give feedback.", es: "Profesores y coordinadores de equipo: definen quién participa en cada prueba, piden préstamo de participantes y dan feedback." },
+                { pt: "Alunos e famílias: veem provas, ranking e notificações.", en: "Students and families: see challenges, ranking and notifications.", es: "Alumnos y familias: ven pruebas, ranking y notificaciones." },
+              ],
+            },
+          ],
+        },
+        {
+          id: "papel",
+          icon: "⚔",
+          title: { pt: "Meu papel na party", en: "My role in the party", es: "Mi rol en el grupo" },
+          body: [
+            { p: { pt: "Fui o maior contribuidor de código entre os oito desenvolvedores (70 commits, sem contar merges) e abri 23 dos 26 pull requests do repositório principal. Também fui quem colocou o sistema em produção e cuidou dele durante o estágio na escola.", en: "I was the top code contributor among the eight developers (70 commits, not counting merges) and opened 23 of the 26 pull requests in the main repository. I was also the one who put the system into production and looked after it during my internship at the school.", es: "Fui el mayor contribuidor de código entre los ocho desarrolladores (70 commits, sin contar merges) y abrí 23 de los 26 pull requests del repositorio principal. También fui quien puso el sistema en producción y lo cuidó durante mis prácticas en la escuela." } },
+            {
+              list: [
+                { pt: "Deploy do front na Vercel e da API no Render, com bancos de produção e desenvolvimento separados no MongoDB Atlas.", en: "Deployed the front end on Vercel and the API on Render, with separate production and development databases on MongoDB Atlas.", es: "Deploy del front en Vercel y de la API en Render, con bases de producción y desarrollo separadas en MongoDB Atlas." },
+                { pt: "Titulares e reservas por prova, auto-cadastro de alunos, códigos de convite e aprovação de vínculo.", en: "Starters and substitutes per challenge, student self-registration, invite codes and membership approval.", es: "Titulares y suplentes por prueba, auto-registro de alumnos, códigos de invitación y aprobación de vínculo." },
+                { pt: "Notificações internas e por e-mail, com fila de envio.", en: "In-app and e-mail notifications, with a sending queue.", es: "Notificaciones internas y por correo, con cola de envío." },
+                { pt: "A virada para várias gincanas e várias escolas no mesmo sistema (multi-tenant).", en: "The shift to multiple gymkhanas and multiple schools in the same system (multi-tenant).", es: "El paso a varias gincanas y varias escuelas en el mismo sistema (multi-tenant)." },
+              ],
+            },
+            { img: "img/projects/scavenger.webp", alt: { pt: "Painel do administrador com provas, equipes e ranking", en: "Admin dashboard with challenges, teams and ranking", es: "Panel del administrador con pruebas, equipos y ranking" } },
+          ],
+        },
+        {
+          id: "mapa",
+          icon: "🧭",
+          title: { pt: "Mapa: a arquitetura", en: "Map: the architecture", es: "Mapa: la arquitectura" },
+          body: [
+            {
+              flow: [
+                { label: "React 19 + Vite", sub: { pt: "45 telas · Vercel", en: "45 screens · Vercel", es: "45 pantallas · Vercel" } },
+                { label: "API Express 5", sub: { pt: "JWT · Render", en: "JWT · Render", es: "JWT · Render" } },
+                { label: "MongoDB Atlas", sub: { pt: "20 modelos Mongoose", en: "20 Mongoose models", es: "20 modelos Mongoose" } },
+                { label: "BullMQ + Redis", sub: { pt: "fila de e-mails", en: "e-mail queue", es: "cola de correos" } },
+              ],
+            },
+            { p: { pt: "Toda requisição passa por uma cadeia de middlewares: proteger (valida o JWT) → resolverEscola → resolverGincana → autorizar (confere o perfil). É ela que garante que uma escola nunca enxergue os dados de outra.", en: "Every request goes through a middleware chain: proteger (checks the JWT) → resolverEscola → resolverGincana → autorizar (checks the role). That chain is what guarantees one school never sees another school's data.", es: "Cada petición pasa por una cadena de middlewares: proteger (valida el JWT) → resolverEscola → resolverGincana → autorizar (verifica el perfil). Esa cadena garantiza que una escuela nunca vea los datos de otra." } },
+            { p: { pt: "As decisões importantes ficaram registradas em quatro ADRs: o worker de e-mail no mesmo processo da API, a fila BullMQ, a autenticação com JWT e o modelo de equipe por gincana.", en: "The key decisions are recorded in four ADRs: the e-mail worker in the same process as the API, the BullMQ queue, JWT authentication and the team-per-gymkhana model.", es: "Las decisiones importantes quedaron registradas en cuatro ADRs: el worker de correo en el mismo proceso de la API, la cola BullMQ, la autenticación con JWT y el modelo de equipo por gincana." } },
+          ],
+        },
+        {
+          id: "batalhas",
+          icon: "🐉",
+          title: { pt: "Batalhas: desafios e decisões", en: "Battles: challenges and decisions", es: "Batallas: desafíos y decisiones" },
+          body: [
+            { lead: { pt: "O e-mail que sumia em produção.", en: "The e-mail that vanished in production.", es: "El correo que desaparecía en producción." }, p: { pt: "No plano gratuito, o Render hiberna a API quando ela fica parada, e o worker de e-mail parava junto: as notificações simplesmente não saíam. A solução teve duas partes: os envios passaram por uma fila (BullMQ sobre Redis), para nada se perder, e criei um workflow no GitHub Actions que chama a rota /health a cada 10 minutos para a API não dormir.", en: "On the free plan, Render puts the API to sleep when it's idle, and the e-mail worker stopped with it: notifications just never went out. The fix had two parts: sending went through a queue (BullMQ on Redis), so nothing gets lost, and I created a GitHub Actions workflow that calls the /health route every 10 minutes so the API doesn't fall asleep.", es: "En el plan gratuito, Render hiberna la API cuando está inactiva, y el worker de correo se detenía con ella: las notificaciones simplemente no salían. La solución tuvo dos partes: los envíos pasaron por una cola (BullMQ sobre Redis), para que nada se pierda, y creé un workflow en GitHub Actions que llama a la ruta /health cada 10 minutos para que la API no se duerma." } },
+            { lead: { pt: "De uma gincana para várias escolas.", en: "From one gymkhana to many schools.", es: "De una gincana a varias escuelas." }, p: { pt: "O sistema nasceu para uma gincana só. Para atender outras escolas, reorganizei os dados na hierarquia Escola → Gincana, com o isolamento feito nos middlewares, scripts de migração e um backup completo da produção antes de cada mudança de estrutura.", en: "The system was born for a single gymkhana. To serve other schools, I reorganized the data into a School → Gymkhana hierarchy, with isolation handled in the middlewares, migration scripts and a full production backup before every structural change.", es: "El sistema nació para una sola gincana. Para atender a otras escuelas, reorganicé los datos en la jerarquía Escuela → Gincana, con el aislamiento en los middlewares, scripts de migración y un backup completo de producción antes de cada cambio de estructura." } },
+            { lead: { pt: "Regras que precisavam ser regras.", en: "Rules that had to be rules.", es: "Reglas que tenían que ser reglas." }, p: { pt: "O uso real mostrou atalhos que não deviam existir. Corrigi vários: o status da prova passou a seguir a data; um vínculo pendente só sai pela fila de aprovação; só o coordenador dá feedback; e há um limite de coordenadores por equipe. Também corrigi um loop de redirecionamento que prendia usuários com vínculo bloqueado.", en: "Real use exposed shortcuts that shouldn't exist. I fixed several: challenge status now follows the date; a pending membership can only leave through the approval queue; only coordinators give feedback; and there's a limit of coordinators per team. I also fixed a redirect loop that trapped users with a blocked membership.", es: "El uso real mostró atajos que no debían existir. Corregí varios: el estado de la prueba pasó a seguir la fecha; un vínculo pendiente solo sale por la cola de aprobación; solo el coordinador da feedback; y hay un límite de coordinadores por equipo. También corregí un bucle de redirección que atrapaba a usuarios con vínculo bloqueado." } },
+          ],
+        },
+        {
+          id: "testes",
+          icon: "🧪",
+          title: { pt: "Testes e qualidade", en: "Testing and quality", es: "Pruebas y calidad" },
+          body: [
+            {
+              list: [
+                { pt: "47 arquivos de teste automatizado: Jest, supertest e mongodb-memory-server na API, e Vitest com Testing Library no front.", en: "47 automated test files: Jest, supertest and mongodb-memory-server on the API, and Vitest with Testing Library on the front end.", es: "47 archivos de prueba automatizada: Jest, supertest y mongodb-memory-server en la API, y Vitest con Testing Library en el front." },
+                { pt: "CI no GitHub Actions rodando testes e build a cada push (81 de 87 execuções com sucesso). O pipeline foi criado por um colega; eu subi os pisos mínimos de cobertura.", en: "CI on GitHub Actions running tests and the build on every push (81 of 87 runs successful). A teammate set up the pipeline; I raised the minimum coverage thresholds.", es: "CI en GitHub Actions corriendo pruebas y build en cada push (81 de 87 ejecuciones exitosas). Un compañero creó el pipeline; yo subí los pisos mínimos de cobertura." },
+                { pt: "A equipe manteve também uma suíte E2E com Selenium, com 27 casos de teste (provas, equipes, ranking, funcionalidades, segurança e desempenho).", en: "The team also kept an E2E suite with Selenium, with 27 test cases (challenges, teams, ranking, features, security and performance).", es: "El equipo mantuvo también una suite E2E con Selenium, con 27 casos de prueba (pruebas, equipos, ranking, funcionalidades, seguridad y rendimiento)." },
+              ],
+            },
+          ],
+        },
+        {
+          id: "loot",
+          icon: "💰",
+          title: { pt: "Loot: o resultado", en: "Loot: the outcome", es: "Botín: el resultado" },
+          body: [
+            {
+              list: [
+                { pt: "Em produção desde março de 2026, com 16 deploys de produção até setembro.", en: "In production since March 2026, with 16 production deploys through September.", es: "En producción desde marzo de 2026, con 16 deploys de producción hasta septiembre." },
+                { pt: "Usado de verdade por servidores e alunos da escola durante o meu estágio.", en: "Actually used by school staff and students during my internship.", es: "Usado de verdad por funcionarios y alumnos de la escuela durante mis prácticas." },
+                { pt: "Pronto para mais de uma escola, com convites e aprovação de vínculo.", en: "Ready for more than one school, with invites and membership approval.", es: "Listo para más de una escuela, con invitaciones y aprobación de vínculo." },
+                { pt: "Documentação de produto, arquitetura (ADRs) e um guia de instalação e deploy.", en: "Product and architecture documentation (ADRs), plus an installation and deploy guide.", es: "Documentación de producto, arquitectura (ADRs) y una guía de instalación y deploy." },
+              ],
+            },
+          ],
+        },
+        {
+          id: "xp",
+          icon: "✨",
+          title: { pt: "XP ganho: o que aprendi", en: "XP gained: what I learned", es: "XP ganada: lo que aprendí" },
+          body: [
+            {
+              list: [
+                { pt: "Colocar em produção muda o jogo: hibernação, e-mail, backup e migração de dados não aparecem no projeto de disciplina.", en: "Going to production changes the game: sleeping servers, e-mail, backups and data migrations never show up in a course project.", es: "Poner en producción cambia el juego: hibernación, correo, backups y migración de datos no aparecen en el proyecto de asignatura." },
+                { pt: "Pensar em multi-tenant cedo sai mais barato do que reorganizar os dados depois.", en: "Thinking about multi-tenancy early is cheaper than reshaping the data later.", es: "Pensar en multi-tenant temprano sale más barato que reorganizar los datos después." },
+                { pt: "Registrar decisões em ADRs ajuda quem chega depois, inclusive eu mesmo alguns meses depois.", en: "Recording decisions in ADRs helps whoever comes next, including me a few months later.", es: "Registrar decisiones en ADRs ayuda a quien llega después, incluso a mí mismo unos meses más tarde." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   },
 
   // ---------- Segredos ----------

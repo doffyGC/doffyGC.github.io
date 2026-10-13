@@ -7,6 +7,12 @@
   const root = document.documentElement;
   const LANG = root.dataset.lang || "pt";
   const BASE = root.dataset.base || "";
+  // "home" (página principal) ou "case" (estudo de caso, com data-case = id da quest)
+  const PAGE = root.dataset.page || "home";
+  const CASE = root.dataset.case;
+  const langPath = (code) => D.languages.find((l) => l.code === code)?.path || "";
+  // Âncora de uma seção da página principal: na própria home é só "#id"
+  const homeLink = (id) => (PAGE === "home" ? `#${id}` : `${BASE}${langPath(LANG)}#${id}`);
 
   // ---------- Utilidades ----------
 
@@ -62,13 +68,14 @@
     const langs = D.languages
       .map((l) => {
         const current = l.code === LANG;
-        return `<a class="chip" href="${BASE}${l.path || "./"}" hreflang="${l.code}" lang="${l.code}" title="${esc(l.name)}" ${current ? 'aria-current="true"' : 'data-xp="lang"'}>${l.label}</a>`;
+        const target = `${BASE}${l.path}${PAGE === "case" ? `quests/${CASE}/` : ""}` || "./";
+        return `<a class="chip" href="${target}" hreflang="${l.code}" lang="${l.code}" title="${esc(l.name)}" ${current ? 'aria-current="true"' : 'data-xp="lang"'}>${l.label}</a>`;
       })
       .join("");
 
     const items = D.sections
       .map(
-        (s) => `<li><a href="#${s.id}" data-nav="${s.id}">
+        (s) => `<li><a href="${homeLink(s.id)}" data-nav="${s.id}">
           <span class="m-game">${esc(t(s.game))}</span>
           <span class="m-legend">${esc(t(s.legend))}</span></a></li>`
       )
@@ -76,7 +83,7 @@
 
     return `
       <div class="wrap hud-inner">
-        <a class="hud-logo" href="#inicio" aria-label="${esc(D.profile.shortName)}">
+        <a class="hud-logo" href="${homeLink("inicio")}" aria-label="${esc(D.profile.shortName)}">
           ${Sprite.head()}
           <span class="logo-text">GM</span>
         </a>
@@ -286,6 +293,7 @@
       q.repo ? ext(q.repo, esc(t(Q.repo))) : "",
       q.repoPrivate ? `<span class="link-btn is-private">${esc(t(Q.private))}</span>` : "",
       q.demo ? ext(q.demo, `▶ ${esc(t(Q.demo))}`, "link-btn is-demo") : "",
+      D.cases?.[q.id] ? `<a class="link-btn is-case" href="${BASE}${langPath(LANG)}quests/${q.id}/">📖 ${esc(t(D.caseUi.open))}</a>` : "",
     ].join("");
     const details = q.bullets?.length
       ? `<details class="quest-details">
@@ -508,6 +516,67 @@
     });
   }
 
+  // ---------- Estudo de caso ("Relatório da missão") ----------
+
+  // Blocos de conteúdo: { p }, { list }, { img, alt }, { flow: [ { label, sub } ] }, { quote }
+  function block(b) {
+    if (b.p) return `${b.lead ? `<h3 class="case-lead pixel">${esc(t(b.lead).replace(/\.$/, ""))}</h3>` : ""}<p>${esc(t(b.p))}</p>`;
+    if (b.list) return `<ul class="bullets">${b.list.map((x) => `<li>${esc(t(x))}</li>`).join("")}</ul>`;
+    if (b.quote) return `<blockquote class="case-quote">${esc(t(b.quote))}</blockquote>`;
+    if (b.img) return shot({ image: b.img, alt: b.alt });
+    if (b.flow)
+      return `<ol class="case-flow">${b.flow
+        .map((n) => `<li><span class="flow-label pixel">${esc(t(n.label))}</span><span class="flow-sub">${esc(t(n.sub))}</span></li>`)
+        .join("")}</ol>`;
+    return "";
+  }
+
+  function caseView() {
+    const C = D.cases?.[CASE];
+    const q = D.quests.list.find((x) => x.id === CASE);
+    if (!C || !q) return `<div class="wrap section"><div class="dialog"><p>404</p></div></div>`;
+    const U = D.caseUi;
+    const actions = [
+      q.repo ? ext(q.repo, esc(t(D.quests.repo))) : "",
+      q.demo ? ext(q.demo, `▶ ${esc(t(D.quests.demo))}`, "link-btn is-demo") : "",
+    ].join("");
+    return `
+      <article class="case">
+        <header class="case-hero">
+          <div class="wrap">
+            <a class="case-back pixel" href="${homeLink("quests")}">◀ ${esc(t(U.back))}</a>
+            <p class="title-kicker">${esc(t(U.kicker))} · <span class="stars">★★★</span></p>
+            <h1 class="case-title">${esc(t(q.title))}</h1>
+            <p class="case-summary">${esc(t(C.summary))}</p>
+            <dl class="case-facts">
+              ${C.facts.map((f) => `<div><dt>${esc(t(f.k))}</dt><dd>${esc(t(f.v))}</dd></div>`).join("")}
+            </dl>
+            ${tags(q.stack)}
+            <div class="links">${actions}</div>
+          </div>
+        </header>
+        <div class="wrap case-body">
+          <nav class="dialog case-toc" aria-label="${esc(t(U.toc))}">
+            <p class="pixel">${esc(t(U.toc))}</p>
+            <ol>${C.sections.map((sec) => `<li><a href="#${sec.id}">${esc(t(sec.title))}</a></li>`).join("")}</ol>
+          </nav>
+          <div class="case-content">
+            ${C.stats?.length ? `<div class="stats case-stats">${C.stats.map((st) => `<div class="stat"><span class="stat-n num">${esc(st.n)}</span><span class="stat-l">${esc(t(st.label))}</span></div>`).join("")}</div>` : ""}
+            ${C.sections
+              .map(
+                (sec) => `
+              <section class="case-section" id="${sec.id}" aria-labelledby="h-${sec.id}">
+                <h2 id="h-${sec.id}"><span aria-hidden="true">${sec.icon}</span> ${esc(t(sec.title))}</h2>
+                ${sec.body.map(block).join("")}
+              </section>`
+              )
+              .join("")}
+            <a class="btn" href="${homeLink("quests")}">◀ ${esc(t(U.back))}</a>
+          </div>
+        </div>
+      </article>`;
+  }
+
   function footer() {
     return `<div class="wrap">${esc(t(D.ui.footer))} · ${new Date().getFullYear()}</div>`;
   }
@@ -638,7 +707,7 @@
 
   function render() {
     document.getElementById("hud").innerHTML = hud();
-    document.getElementById("main").innerHTML = titleScreen() + D.sections.map(section).join("");
+    document.getElementById("main").innerHTML = PAGE === "case" ? caseView() : titleScreen() + D.sections.map(section).join("");
     document.getElementById("footer").innerHTML = footer();
     document.querySelector(".skip-link").textContent = t(D.ui.skipLink);
 
