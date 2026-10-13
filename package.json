@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-rpg",
+  "private": true,
+  "description": "Portfolio-RPG de Guilherme Mundt. Site estático: este arquivo existe só para os testes.",
+  "scripts": {
+    "serve": "node tests/server.mjs 8765",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --test \"tests/unit/*.test.mjs\"",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

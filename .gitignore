@@ -1,2 +1,7 @@
 # CV original (contém telefone). A versão pública, sem telefone, fica em cv/
 Curriculum_Vitae.pdf
+
+# Dependências e saídas dos testes
+node_modules/
+test-results/
+playwright-report/

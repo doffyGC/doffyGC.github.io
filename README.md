@@ -8,10 +8,25 @@ As decisões de design estão em [`DESIGN.md`](DESIGN.md).
 ## Rodar localmente
 
 ```bash
-python -m http.server 8765
+npm run serve        # ou: python -m http.server 8765
 ```
 
 Depois abra <http://localhost:8765>. As versões em inglês e espanhol ficam em `/en/` e `/es/`.
+
+## Testes
+
+```bash
+npm ci
+npm run test:unit    # dados e links (node:test, sem dependências)
+npm run test:e2e     # Playwright: abre as páginas no desktop e no celular
+```
+
+- **Dados e links:** traduções completas em PT/EN/ES, ids únicos, referências da skill tree e do grimório,
+  conquistas e tipos de XP usados no código, arquivos citados nas páginas, no CSS, no `data.js` e no sitemap.
+- **Ponta a ponta:** cada página monta sem erro no console e sem rolagem horizontal; tema, modo recrutador, menu,
+  UniBot, batalha, Konami code, prints ampliados e o caminho até o estudo de caso funcionam.
+
+O workflow [`ci.yml`](.github/workflows/ci.yml) roda tudo a cada push e PR.
 
 ## Editar o conteúdo
 
@@ -32,17 +47,11 @@ Texto traduzível é um objeto `{ pt, en, es }`.
 - [ ] **Formspree:** criar um formulário em <https://formspree.io> e colocar o ID em `profile.formspree`. Sem ele, o formulário abre o app de e-mail do visitante.
 - [ ] **Lattes:** preencher `profile.lattes` (opcional).
 
-## Publicar no GitHub Pages
+## Publicação
 
-1. Renomear o repositório para `doffyGC.github.io` (Settings → General → Repository name).
-2. Deixar o repositório **público** (Settings → General → Danger Zone → Change visibility). No plano gratuito, o Pages exige isso.
-3. Atualizar o remoto local:
-   ```bash
-   git remote set-url origin https://github.com/doffyGC/doffyGC.github.io.git
-   git push origin main
-   ```
-4. Settings → Pages → *Deploy from a branch* → `main` / `/ (root)`.
-5. Em alguns minutos o site fica em <https://doffygc.github.io/>.
+O site fica em <https://doffygc.github.io/>. A publicação é automática: a cada push na `main`, o workflow
+roda os testes e, se tudo passar, envia **só os arquivos do site** para o GitHub Pages
+(Settings → Pages → Source: *GitHub Actions*). Versão quebrada não vai para o ar.
 
 Depois de publicar, vale testar a prévia do link no [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
 
