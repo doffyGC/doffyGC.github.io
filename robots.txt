@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://doffygc.github.io/sitemap.xml
