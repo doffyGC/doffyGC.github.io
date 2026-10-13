@@ -551,7 +551,7 @@ window.PORTFOLIO = {
   game: {
     xpPerLevel: 100,
     // Quanto vale cada tipo de ação (cada ação só conta uma vez)
-    xp: { visit: 10, quest: 8, skill: 3, cv: 30, contact: 60, theme: 5, sound: 5, lang: 10, secret: 40, start: 5 },
+    xp: { visit: 10, quest: 8, skill: 3, cv: 30, contact: 60, theme: 5, sound: 5, lang: 10, secret: 40, start: 5, npc: 6, arena: 40, battle: 40 },
     levelUp: { pt: "Level up!", en: "Level up!", es: "¡Subiste de nivel!" },
     levelUpText: { pt: "Você chegou ao Lv", en: "You reached Lv", es: "Llegaste al Lv" },
     unlocked: { pt: "Conquista desbloqueada", en: "Achievement unlocked", es: "Logro desbloqueado" },
@@ -570,8 +570,90 @@ window.PORTFOLIO = {
       { id: "theme", icon: "🌗", name: { pt: "Dia e noite", en: "Day and night", es: "Día y noche" }, desc: { pt: "Trocou o tema.", en: "Switched the theme.", es: "Cambiaste el tema." } },
       { id: "chiptune", icon: "🔊", name: { pt: "Chiptune", en: "Chiptune", es: "Chiptune" }, desc: { pt: "Ligou o som.", en: "Turned the sound on.", es: "Activaste el sonido." } },
       { id: "polyglot", icon: "🌐", name: { pt: "Poliglota", en: "Polyglot", es: "Políglota" }, desc: { pt: "Trocou de idioma.", en: "Switched languages.", es: "Cambiaste de idioma." } },
+      { id: "npc", icon: "💬", name: { pt: "Papo com o UniBot", en: "Chat with UniBot", es: "Charla con UniBot" }, desc: { pt: "Fez 3 perguntas ao UniBot.", en: "Asked UniBot 3 questions.", es: "Le hiciste 3 preguntas a UniBot." } },
       { id: "lv5", icon: "⭐", name: { pt: "Veterano(a)", en: "Veteran", es: "Veterano(a)" }, desc: { pt: "Chegou ao Lv 5.", en: "Reached Lv 5.", es: "Llegaste al Lv 5." } },
       { id: "secret", icon: "🗝", secret: true, name: { pt: "Caçador(a) de segredos", en: "Secret hunter", es: "Cazador(a) de secretos" }, desc: { pt: "Achou um segredo escondido.", en: "Found a hidden secret.", es: "Encontraste un secreto escondido." } },
+    ],
+  },
+
+  // ---------- NPC: UniBot ----------
+  npc: {
+    title: "Pampa Live Messenger",
+    name: "UniBot",
+    status: { pt: "Online · responde na hora", en: "Online · replies instantly", es: "En línea · responde al instante" },
+    open: { pt: "Falar com o UniBot", en: "Talk to UniBot", es: "Hablar con UniBot" },
+    close: { pt: "Fechar conversa", en: "Close chat", es: "Cerrar chat" },
+    you: { pt: "Você", en: "You", es: "Tú" },
+    pick: { pt: "Escolha uma pergunta:", en: "Pick a question:", es: "Elige una pregunta:" },
+    skip: { pt: "Clique para pular", en: "Click to skip", es: "Haz clic para saltar" },
+    hello: {
+      pt: "Oi! Eu sou o UniBot. No mundo real eu respondo dúvidas sobre a UNIPAMPA; aqui, eu conto tudo sobre o Guilherme. O que você quer saber?",
+      en: "Hi! I'm UniBot. In the real world I answer questions about UNIPAMPA; here, I tell you all about Guilherme. What do you want to know?",
+      es: "¡Hola! Soy UniBot. En el mundo real respondo dudas sobre la UNIPAMPA; aquí, te cuento todo sobre Guilherme. ¿Qué quieres saber?",
+    },
+    questions: [
+      {
+        q: { pt: "Quem é o Guilherme?", en: "Who is Guilherme?", es: "¿Quién es Guilherme?" },
+        a: {
+          pt: "Um dev full-stack e de IA aplicada, no {lv}º semestre de Engenharia de Software da UNIPAMPA. Hoje ele é bolsista no PET-Saúde e estagiário numa escola, onde implantou um sistema de gincanas.",
+          en: "A full-stack and applied AI developer in semester {lv} of Software Engineering at UNIPAMPA. Right now he's a scholarship developer at PET-Saúde and an intern at a school, where he deployed a gymkhana system.",
+          es: "Un dev full-stack y de IA aplicada, en el {lv}º semestre de Ingeniería de Software en la UNIPAMPA. Hoy es becario en PET-Saúde y practicante en una escuela, donde implantó un sistema de gincanas.",
+        },
+        link: { href: "#ficha", label: { pt: "Abrir a ficha", en: "Open the sheet", es: "Abrir la hoja" } },
+      },
+      {
+        q: { pt: "Ele está disponível para uma vaga?", en: "Is he available for a job?", es: "¿Está disponible para una vacante?" },
+        a: {
+          pt: "Sim! Ele procura uma vaga de desenvolvedor júnior ou web. Topa trabalho em equipe, Git Flow e code review (na verdade, ele gosta).",
+          en: "Yes! He's looking for a junior or web developer role. Teamwork, Git Flow and code review are welcome (he actually enjoys them).",
+          es: "¡Sí! Busca una vacante de desarrollador junior o web. Trabajo en equipo, Git Flow y code review son bienvenidos (de hecho, le gustan).",
+        },
+        link: { href: "#contato", label: { pt: "Recrutar para a party", en: "Recruit to the party", es: "Reclutar para el grupo" } },
+      },
+      {
+        q: { pt: "Qual é o melhor projeto dele?", en: "What's his best project?", es: "¿Cuál es su mejor proyecto?" },
+        a: {
+          pt: "Eu sou suspeito para falar, porque o melhor sou eu. 😄 Fora isso, o Scavenger Project está em uso real numa escola, e a Raid do ERENO junta pesquisa, cibersegurança e IA explicável.",
+          en: "I'm biased, because the best one is me. 😄 Apart from that, Scavenger Project is in real use at a school, and the ERENO raid mixes research, cybersecurity and explainable AI.",
+          es: "No soy imparcial, porque el mejor soy yo. 😄 Aparte de eso, Scavenger Project se usa de verdad en una escuela, y la Raid de ERENO junta investigación, ciberseguridad e IA explicable.",
+        },
+        link: { href: "#quests", label: { pt: "Abrir o Quest Log", en: "Open the Quest Log", es: "Abrir el registro" } },
+      },
+      {
+        q: { pt: "O que é esse tal de ERENO?", en: "What's this ERENO thing?", es: "¿Qué es eso de ERENO?" },
+        a: {
+          pt: "Um gerador de tráfego de rede de subestações de energia (IEC 61850 / GOOSE). Com ele dá para criar ataques de mentirinha e treinar sistemas que detectam intrusos de verdade.",
+          en: "A network traffic generator for power substations (IEC 61850 / GOOSE). With it you can create make-believe attacks and train systems that detect real intruders.",
+          es: "Un generador de tráfico de red de subestaciones eléctricas (IEC 61850 / GOOSE). Con él se crean ataques de mentira para entrenar sistemas que detectan intrusos de verdad.",
+        },
+        link: { href: "#raid", label: { pt: "Entrar na Raid", en: "Enter the Raid", es: "Entrar en la Raid" } },
+      },
+      {
+        q: { pt: "Quais tecnologias ele usa?", en: "Which technologies does he use?", es: "¿Qué tecnologías usa?" },
+        a: {
+          pt: "No dia a dia: React, Node.js, NestJS e TypeScript na web; Python, FastAPI, RAG e agentes com LLM na IA; Docker para empacotar tudo.",
+          en: "Day to day: React, Node.js, NestJS and TypeScript on the web; Python, FastAPI, RAG and LLM agents for AI; Docker to package it all.",
+          es: "En el día a día: React, Node.js, NestJS y TypeScript en la web; Python, FastAPI, RAG y agentes con LLM en IA; Docker para empaquetarlo todo.",
+        },
+        link: { href: "#skills", label: { pt: "Ver a skill tree", en: "See the skill tree", es: "Ver el árbol" } },
+      },
+      {
+        q: { pt: "Tem algum segredo neste site?", en: "Are there secrets on this site?", es: "¿Hay secretos en este sitio?" },
+        a: {
+          pt: "Dizem que os códigos antigos ainda funcionam por aqui... ↑ ↑ ↓ ↓ ← → ← → B A. E que um bug mora no rodapé. Mas você não ouviu isso de mim. 🤫",
+          en: "They say the old codes still work around here... ↑ ↑ ↓ ↓ ← → ← → B A. And that a bug lives in the footer. But you didn't hear it from me. 🤫",
+          es: "Dicen que los códigos antiguos todavía funcionan por aquí... ↑ ↑ ↓ ↓ ← → ← → B A. Y que un bug vive en el pie de página. Pero no lo escuchaste de mí. 🤫",
+        },
+      },
+      {
+        q: { pt: "Como eu falo com ele?", en: "How do I reach him?", es: "¿Cómo lo contacto?" },
+        a: {
+          pt: "Pelo formulário aqui do site, pelo e-mail guilhermemundt2@gmail.com ou pelo LinkedIn. Ele responde rápido!",
+          en: "Through the form on this site, by e-mail at guilhermemundt2@gmail.com or on LinkedIn. He replies fast!",
+          es: "Por el formulario de este sitio, por correo a guilhermemundt2@gmail.com o por LinkedIn. ¡Responde rápido!",
+        },
+        link: { href: "#contato", label: { pt: "Ir para o contato", en: "Go to contact", es: "Ir al contacto" } },
+      },
     ],
   },
 

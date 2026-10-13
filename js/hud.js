@@ -94,7 +94,11 @@
 
   // ---------- XP e conquistas ----------
 
+  // O localStorage é a fonte da verdade: relê antes de mudar, para duas abas abertas não se sobrescreverem
+  const sync = () => (state = load());
+
   function unlock(id, { defer = false } = {}) {
+    sync();
     if (state.ach[id] || !G.achievements.some((a) => a.id === id)) return;
     state.ach[id] = Date.now();
     if (defer) state.queue.push(id);
@@ -104,6 +108,7 @@
   }
 
   function award(key, type, opts = {}) {
+    sync();
     if (state.done[key]) return false;
     const before = levelOf(state.xp);
     state.done[key] = 1;

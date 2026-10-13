@@ -51,12 +51,13 @@
     return out;
   }
 
-  function svg({ skin = "default", viewBox, className = "", title = "" } = {}) {
-    const palette = SKINS[skin] || SKINS.default;
-    const vb = viewBox || `0 0 ${MAP[0].length} ${MAP.length}`;
+  function draw(map, palette, { viewBox, className = "", title = "" } = {}) {
+    const vb = viewBox || `0 0 ${map[0].length} ${map.length}`;
     const label = title ? `role="img" aria-label="${title}"` : `aria-hidden="true"`;
-    return `<svg class="${className}" viewBox="${vb}" shape-rendering="crispEdges" ${label} xmlns="http://www.w3.org/2000/svg">${rects(MAP, palette)}</svg>`;
+    return `<svg class="${className}" viewBox="${vb}" shape-rendering="crispEdges" ${label} xmlns="http://www.w3.org/2000/svg">${rects(map, palette)}</svg>`;
   }
+
+  const svg = ({ skin = "default", ...opts } = {}) => draw(MAP, SKINS[skin] || SKINS.default, opts);
 
   window.Sprite = {
     // Corpo inteiro
@@ -64,5 +65,7 @@
     // Só a cabeça (logo do HUD, favicon)
     head: (opts = {}) => svg({ ...opts, viewBox: "2 0 12 11" }),
     skins: Object.keys(SKINS),
+    // Desenha qualquer mapa de caracteres (usado pelo UniBot e pelos inimigos da batalha)
+    draw,
   };
 })();

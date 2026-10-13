@@ -339,3 +339,251 @@ a.hud-xp:hover .lv {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+/* ---------- NPC: UniBot (Pampa Live Messenger) ---------- */
+
+.npc-launcher {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 55;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 6px 14px 6px 8px;
+  border: 0;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: var(--font-pixel);
+  cursor: pointer;
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 var(--ink),
+    0 var(--px) 0 0 var(--ink),
+    calc(var(--px) * -1) 0 0 0 var(--ink),
+    var(--px) 0 0 0 var(--ink),
+    var(--px) calc(var(--px) * 2) 0 0 var(--shadow);
+}
+
+.npc-launcher:hover {
+  color: var(--gold);
+}
+
+.npc-launcher-bot {
+  width: 36px;
+  height: 36px;
+  animation: bob 1.4s steps(2) infinite;
+}
+
+.npc-ping {
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 0.8rem;
+  box-shadow: 0 0 0 2px var(--outline);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+.npc-launcher.is-seen .npc-ping,
+.npc-launcher[aria-expanded="true"] {
+  display: none;
+}
+
+.npc-launcher[aria-expanded="true"] {
+  display: none;
+}
+
+.npc-window {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 56;
+  width: min(380px, calc(100vw - 32px));
+  max-height: min(620px, calc(100vh - var(--hud-h) - 32px));
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.npc-window[hidden] {
+  display: none;
+}
+
+.npc-window::before {
+  display: none;
+}
+
+.npc-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px 6px 14px;
+  background: var(--mp);
+  color: var(--on-gold);
+}
+
+.npc-close {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.npc-close:hover {
+  background: var(--on-gold);
+  color: var(--mp);
+}
+
+.npc-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--panel-2);
+}
+
+.npc-contact p {
+  margin: 0;
+  line-height: 1.25;
+}
+
+.npc-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-2);
+  box-shadow: 0 0 0 2px var(--panel-2);
+}
+
+.npc-name {
+  font-size: 1.1rem;
+}
+
+.npc-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.npc-status .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--hp);
+}
+
+.npc-log {
+  flex: 1;
+  min-height: 120px;
+  overflow-y: auto;
+  padding: 12px 14px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.npc-msg {
+  max-width: 88%;
+}
+
+.npc-msg p {
+  margin: 2px 0 0;
+  padding: 8px 12px;
+  background: var(--bg-2);
+  box-shadow: 0 0 0 2px var(--panel-2);
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.npc-msg-you {
+  justify-self: end;
+  text-align: right;
+}
+
+.npc-msg-you p {
+  background: var(--panel-2);
+  box-shadow: 0 0 0 2px var(--mp);
+  text-align: left;
+}
+
+.npc-msg-link p {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.npc-who {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.npc-msg-link .npc-who {
+  display: none;
+}
+
+.npc-pick {
+  margin: 0;
+  padding: 8px 14px 4px;
+  border-top: 2px solid var(--panel-2);
+  font-family: var(--font-pixel);
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+
+.npc-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 14px 14px;
+  max-height: 170px;
+  overflow-y: auto;
+}
+
+.npc-q {
+  min-height: 34px;
+  padding: 4px 10px;
+  border: 2px solid var(--panel-2);
+  background: var(--bg-2);
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.npc-q:hover:not(:disabled) {
+  border-color: var(--gold);
+}
+
+.npc-q.is-asked {
+  color: var(--muted);
+}
+
+.npc-q:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+@media (max-width: 640px) {
+  .npc-launcher-label {
+    display: none;
+  }
+  .npc-launcher {
+    padding: 6px 8px;
+  }
+  .npc-window {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+}

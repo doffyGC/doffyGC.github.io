@@ -49,6 +49,10 @@ h3 {
   letter-spacing: 0.02em;
 }
 
+.pixel {
+  font-family: var(--font-pixel);
+}
+
 code,
 kbd {
   font-family: var(--font-mono);
