@@ -14,7 +14,7 @@ window.PORTFOLIO = {
     linkedin: "https://www.linkedin.com/in/guilherme-mundt-5381602a6/",
     lattes: null, // TODO: adicionar depois
     cv: null, // TODO: caminho do CV sem telefone, ex.: "cv/guilherme-mundt-cv.pdf"
-    photo: null, // TODO: caminho da foto, ex.: "img/foto.jpg"
+    photo: "img/foto.webp",
     available: true,
     // ID do formulário no Formspree (ex.: "xabcdwyz"). Sem ID, o formulário abre o app de e-mail.
     formspree: null,

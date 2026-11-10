@@ -60,7 +60,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 |---|---|---|
 | 0 | **HUD** (fixo no topo) | XP/nível do visitante, menu das seções, idioma, tema, 🔇 som, ⏭ Pular o jogo |
 | 1 | **Tela de título** | Sprite pixel do Guilherme, nome, classe "Engenheiro de Software · Full-stack & IA", **Lv. automático** (semestre desde 03/2023), selo 🟢 "Procurando party: vaga júnior / web", botões `PRESS START` (rola até a Ficha) e `💾 Save file` (baixa o CV) |
-| 2 | **Ficha do personagem · Sobre** | Retrato (foto: **espaço reservado**, Guilherme adiciona depois), origem Alegrete/RS, UNIPAMPA (Eng. de Software), idiomas, resumo, "atributos" |
+| 2 | **Ficha do personagem · Sobre** | Retrato (foto em `img/foto.webp`), origem Alegrete/RS, UNIPAMPA (Eng. de Software), idiomas, resumo, "atributos" |
 | 3 | **Skill tree · Competências** | Ramos: Linguagens · Web & Frameworks · Bancos · IA & Dados · Cloud & DevOps · Versionamento & Testes. Nós clicáveis mostram onde a skill foi usada (links pras quests) |
 | 4 | **Campanha · Experiência e Formação** | Capítulos em linha do tempo: Ensino Médio (2022) → UNIPAMPA (2023–) → BRISA, Residência em TIC (03–09/2025) → PET-Saúde (09/2025–) → Estágio na Escola Demétrio Ribeiro (03–12/2026) |
 | 5 | **Raid: Ecossistema ERENO** | Quest especial com 3 andares (ver §5) |
@@ -187,7 +187,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 │   ├── battle.js         # minigame da Arena: batalha contra bugs
 │   ├── secrets.js        # Konami, console, gatilhos
 │   └── github.js         # Diário de bordo
-├── img/                  # sprites SVG, og-image, foto (placeholder)
+├── img/                  # sprites SVG, og-image, foto
 ├── fonts/                # woff2 auto-hospedadas
 └── cv/                   # CV público SEM telefone (PT, e EN/ES se houver)
 ```
@@ -213,7 +213,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 
 ## 10. Pendências
 
-- [ ] Foto do Guilherme pra Ficha (espaço reservado até lá).
+- [x] Foto do Guilherme pra Ficha (`img/foto.webp`).
 - [ ] ID do formulário no Formspree (criar conta grátis).
 - [ ] CV sem telefone (gerar a partir do LaTeX/fonte original, ou redigir o PDF).
 - [ ] Link do Lattes (opcional, depois).

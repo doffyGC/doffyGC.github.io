@@ -42,7 +42,7 @@ Texto traduzível é um objeto `{ pt, en, es }`.
 
 ### Pendências
 
-- [ ] **Foto:** salvar em `img/` e preencher `profile.photo` (ex.: `"img/foto.jpg"`).
+- [x] **Foto:** `img/foto.webp` (recorte quadrado 640×640), em `profile.photo`.
 - [ ] **CV sem telefone:** salvar em `cv/` e preencher `profile.cv`. O `Curriculum_Vitae.pdf` original está no `.gitignore`.
 - [ ] **Formspree:** criar um formulário em <https://formspree.io> e colocar o ID em `profile.formspree`. Sem ele, o formulário abre o app de e-mail do visitante.
 - [ ] **Lattes:** preencher `profile.lattes` (opcional).
