@@ -63,7 +63,9 @@ test("toda URL do sitemap corresponde a uma página do site", () => {
 });
 
 test("o CV original com telefone nunca entra no site", () => {
-  assert.ok(readFileSync(join(ROOT, ".gitignore"), "utf8").includes("Curriculum_Vitae.pdf"));
+  const ignored = readFileSync(join(ROOT, ".gitignore"), "utf8");
+  for (const original of ["Curriculum_Vitae.pdf", "Curriculum_Vitae-english.pdf"]) assert.ok(ignored.includes(original), original);
+  // O CV público mora em cv/, nunca é um dos originais da raiz
   const D = loadData();
-  assert.notEqual(D.profile.cv, "Curriculum_Vitae.pdf");
+  if (D.profile.cv) assert.match(D.profile.cv, /^cv\//);
 });

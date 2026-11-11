@@ -794,6 +794,87 @@
   transform: scale(1.03);
 }
 
+/* ---------- Vídeo (carrega o YouTube só no clique) ---------- */
+
+.video {
+  margin: 0 0 14px;
+}
+
+.video-play,
+.video-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: var(--bg-2);
+  box-shadow: 0 0 0 2px var(--panel-2);
+}
+
+.video-play {
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.video-play img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+  transition: filter 200ms ease;
+}
+
+.video-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-content: center;
+  padding-left: 6px;
+  font-size: 2rem;
+  color: var(--bg);
+  background: var(--gold);
+  box-shadow: 0 0 0 var(--px) var(--ink), 4px 4px 0 var(--px) var(--bg);
+  transition: transform 200ms ease;
+}
+
+.video-play:hover img,
+.video-play:focus-visible img {
+  filter: brightness(1);
+}
+
+.video-play:hover .video-icon,
+.video-play:focus-visible .video-icon {
+  transform: scale(1.08);
+}
+
+.video figcaption {
+  margin-top: 10px;
+}
+
+.video-title {
+  font-weight: 700;
+}
+
+.video-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.video .links {
+  margin-top: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-play img,
+  .video-icon {
+    transition: none;
+  }
+}
+
 .lightbox {
   /* .dialog define position e margin; o <dialog> modal precisa de fixed + margin:auto para ficar centralizado */
   position: fixed;

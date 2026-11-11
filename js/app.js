@@ -440,6 +440,23 @@
       </section>`;
   }
 
+  function setupVideos() {
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-video]");
+      if (!btn) return;
+      const frame = document.createElement("iframe");
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(btn.dataset.video)}?autoplay=1&rel=0`;
+      frame.title = btn.getAttribute("aria-label");
+      frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      frame.allowFullscreen = true;
+      // Sem o referrer o YouTube recusa o player incorporado (erro 153)
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+      frame.className = "video-frame";
+      btn.replaceWith(frame);
+      frame.focus();
+    });
+  }
+
   function setupLightbox() {
     const box = document.createElement("dialog");
     box.className = "dialog lightbox";
@@ -518,17 +535,35 @@
 
   // ---------- Estudo de caso ("Relatório da missão") ----------
 
-  // Blocos de conteúdo: { p }, { list }, { img, alt }, { flow: [ { label, sub } ] }, { quote }
+  // Blocos de conteúdo: { p }, { list }, { img, alt }, { flow: [ { label, sub } ] }, { quote }, { video }
   function block(b) {
     if (b.p) return `${b.lead ? `<h3 class="case-lead pixel">${esc(t(b.lead).replace(/\.$/, ""))}</h3>` : ""}<p>${esc(t(b.p))}</p>`;
     if (b.list) return `<ul class="bullets">${b.list.map((x) => `<li>${esc(t(x))}</li>`).join("")}</ul>`;
     if (b.quote) return `<blockquote class="case-quote">${esc(t(b.quote))}</blockquote>`;
     if (b.img) return shot({ image: b.img, alt: b.alt });
+    if (b.video) return video(b.video);
     if (b.flow)
       return `<ol class="case-flow">${b.flow
         .map((n) => `<li><span class="flow-label pixel">${esc(t(n.label))}</span><span class="flow-sub">${esc(t(n.sub))}</span></li>`)
         .join("")}</ol>`;
     return "";
+  }
+
+  // Vídeo do YouTube que só carrega quando a pessoa clica: até lá é uma miniatura local,
+  // sem nenhuma requisição ao Google (ver setupVideos)
+  function video(v) {
+    const V = D.ui.video;
+    const meta = [v.duration, v.lang === "pt" && LANG !== "pt" ? t(V.inPortuguese) : ""].filter(Boolean).join(" · ");
+    const links = [ext(`https://www.youtube.com/watch?v=${v.id}`, esc(t(V.youtube))), v.more ? ext(v.more.href, esc(t(v.more.label))) : ""].join("");
+    return `
+      <figure class="video">
+        <button type="button" class="video-play" data-video="${esc(v.id)}" aria-label="${esc(t(V.play))}: ${esc(t(v.title))}">
+          <img src="${BASE}${esc(v.thumb)}" alt="" width="960" height="540" loading="lazy" decoding="async">
+          <span class="video-icon" aria-hidden="true">▶</span>
+        </button>
+        <figcaption><span class="video-title">${esc(t(v.title))}</span>${meta ? ` <span class="video-meta num">${esc(meta)}</span>` : ""}</figcaption>
+        <div class="links">${links}</div>
+      </figure>`;
   }
 
   function caseView() {
@@ -720,6 +755,7 @@
     setupSkills();
     setupContact();
     setupLightbox();
+    setupVideos();
   }
 
   render();

@@ -43,7 +43,9 @@ Texto traduzível é um objeto `{ pt, en, es }`.
 ### Pendências
 
 - [x] **Foto:** `img/foto.webp` (recorte quadrado 640×640), em `profile.photo`.
-- [ ] **CV sem telefone:** salvar em `cv/` e preencher `profile.cv`. O `Curriculum_Vitae.pdf` original está no `.gitignore`.
+- [x] **CV sem telefone (EN):** `cv/guilherme-mundt-cv-en.pdf`, em `profile.cv`. Os originais com telefone
+  (`Curriculum_Vitae.pdf` e `Curriculum_Vitae-english.pdf`) estão no `.gitignore`.
+- [ ] **CV em português** sem telefone (hoje as páginas PT/ES oferecem o CV em inglês).
 - [ ] **Formspree:** criar um formulário em <https://formspree.io> e colocar o ID em `profile.formspree`. Sem ele, o formulário abre o app de e-mail do visitante.
 - [ ] **Lattes:** preencher `profile.lattes` (opcional).
 

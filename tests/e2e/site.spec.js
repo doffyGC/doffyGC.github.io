@@ -112,4 +112,24 @@ test.describe("camada de jogo", () => {
     await page.locator(".case-back").click();
     await expect(page).toHaveURL(/\/en\/#quests$/);
   });
+
+  test("vídeo do estudo de caso só chama o YouTube depois do clique", async ({ page }) => {
+    const youtube = [];
+    page.on("request", (r) => /youtube|ytimg|googlevideo/.test(r.url()) && youtube.push(r.url()));
+    await page.route(/youtube-nocookie\.com/, (r) => r.fulfill({ contentType: "text/html", body: "<p>player</p>" }));
+    await page.goto("/en/quests/scavenger/");
+    const play = page.locator(".video-play");
+    await expect(play).toBeVisible();
+    await expect(page.locator(".video-meta")).toContainText("in Portuguese");
+    expect(youtube).toEqual([]);
+    await play.click();
+    await expect(page.locator("iframe.video-frame")).toHaveAttribute("src", /^https:\/\/www\.youtube-nocookie\.com\/embed\/AgPssYdcusw/);
+  });
+
+  test("botão Save file baixa o CV público", async ({ page }) => {
+    await page.goto("/");
+    const save = page.locator('a[data-xp="cv"]');
+    await expect(save).toHaveAttribute("href", /cv\/guilherme-mundt-cv-en\.pdf$/);
+    await expect(save).toHaveAttribute("download", "");
+  });
 });

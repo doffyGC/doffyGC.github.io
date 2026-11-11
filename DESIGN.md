@@ -196,7 +196,7 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
   respeito a `prefers-reduced-motion`, contraste AA.
 - **Responsivo:** funciona a partir de 360px; o HUD vira menu compacto no celular.
 - **SEO/compartilhamento:** `og:image` em pixel art, JSON-LD `Person`, `sitemap.xml`, `robots.txt`.
-- **Métricas:** GoatCounter (sem cookies), na **v1.1**.
+- **Métricas:** GoatCounter foi **descartado** (11/2026, o Guilherme teve problemas com ele). Sem métricas por enquanto.
 
 ## 8. Privacidade
 
@@ -215,7 +215,8 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 
 - [x] Foto do Guilherme pra Ficha (`img/foto.webp`).
 - [ ] ID do formulário no Formspree (criar conta grátis).
-- [ ] CV sem telefone (gerar a partir do LaTeX/fonte original, ou redigir o PDF).
+- [x] CV sem telefone em inglês (`cv/guilherme-mundt-cv-en.pdf`, telefone removido do PDF).
+- [ ] CV em português sem telefone.
 - [ ] Link do Lattes (opcional, depois).
 - [ ] Decidir se torna públicos o ERENO-AI-LAB e outros repos privados (aí eles ganham link).
 - [ ] Revisar a lista final de easter eggs.
@@ -223,6 +224,6 @@ Site **normal e rolável**, com uma **camada de jogo** por cima.
 ## 11. Roadmap
 
 - **v1.0:** tudo das seções 4 a 8 (incluindo Arena, NPC, XP, sons, modo recrutador, PT/EN/ES, Formspree).
-- **v1.1:** GoatCounter, ajustes finos depois do feedback.
+- **v1.1:** ajustes finos depois do feedback.
 - **Ordem de construção sugerida:** tokens + base + tela de título → seções de conteúdo → HUD/XP/conquistas →
   UniBot → Arena (batalha) → segredos → i18n EN/ES → SEO/deploy.

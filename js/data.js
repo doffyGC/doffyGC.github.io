@@ -13,7 +13,8 @@ window.PORTFOLIO = {
     github: "https://github.com/doffyGC",
     linkedin: "https://www.linkedin.com/in/guilherme-mundt-5381602a6/",
     lattes: null, // TODO: adicionar depois
-    cv: null, // TODO: caminho do CV sem telefone, ex.: "cv/guilherme-mundt-cv.pdf"
+    // CV público SEM telefone. Por enquanto só existe em inglês (o botão avisa "EN" nas páginas PT/ES).
+    cv: "cv/guilherme-mundt-cv-en.pdf",
     photo: "img/foto.webp",
     available: true,
     // ID do formulário no Formspree (ex.: "xabcdwyz"). Sem ID, o formulário abre o app de e-mail.
@@ -196,7 +197,7 @@ window.PORTFOLIO = {
         bullets: [
           { pt: "Implantou na escola a plataforma de gincanas Scavenger Project, levando um sistema de disciplina para uso real por servidores e alunos.", en: "Deployed the Scavenger Project gymkhana platform at the school, taking a course project into real use by staff and students.", es: "Implantó en la escuela la plataforma de gincanas Scavenger Project, llevando un sistema de asignatura al uso real por funcionarios y alumnos." },
           { pt: "Stack completa: React, Node.js/Express e MongoDB Atlas, com rotas protegidas por JWT e e-mails transacionais.", en: "Full stack: React, Node.js/Express and MongoDB Atlas, with JWT-protected routes and transactional e-mails.", es: "Stack completo: React, Node.js/Express y MongoDB Atlas, con rutas protegidas por JWT y correos transaccionales." },
-          { pt: "Maior contribuidor de código entre oito desenvolvedores: 70 commits e 23 dos 26 pull requests.", en: "Top code contributor among eight developers: 70 commits and 23 of the 26 pull requests.", es: "Mayor contribuidor de código entre ocho desarrolladores: 70 commits y 23 de los 26 pull requests." },
+          { pt: "Maior contribuidor de código entre oito desenvolvedores: 74 commits e 24 dos 28 pull requests.", en: "Top code contributor among eight developers: 74 commits and 24 of the 28 pull requests.", es: "Mayor contribuidor de código entre ocho desarrolladores: 74 commits y 24 de los 28 pull requests." },
         ],
       },
     ],
@@ -303,7 +304,7 @@ window.PORTFOLIO = {
         },
         bullets: [
           { pt: "Rotas protegidas por JWT e envio de e-mails transacionais.", en: "JWT-protected routes and transactional e-mails.", es: "Rutas protegidas por JWT y envío de correos transaccionales." },
-          { pt: "Maior contribuidor (70 commits e 23 dos 26 PRs), com Git Flow e CI no GitHub Actions.", en: "Top contributor (70 commits and 23 of the 26 PRs), with Git Flow and CI on GitHub Actions.", es: "Mayor contribuidor (70 commits y 23 de los 26 PRs), con Git Flow y CI en GitHub Actions." },
+          { pt: "Maior contribuidor (74 commits e 24 dos 28 PRs), com Git Flow e CI no GitHub Actions.", en: "Top contributor (74 commits and 24 of the 28 PRs), with Git Flow and CI on GitHub Actions.", es: "Mayor contribuidor (74 commits y 24 de los 28 PRs), con Git Flow y CI en GitHub Actions." },
         ],
         repo: "https://github.com/ScavengerProject/ScavengerProject-repo",
         demo: "https://drgincana.vercel.app",
@@ -528,7 +529,7 @@ window.PORTFOLIO = {
       es: "Desarrollo software web full-stack (React, Node.js, NestJS) y sistemas de IA aplicada: pipelines RAG, agentes con LLM y machine learning explicable. Hoy soy becario en PET-Saúde, construyendo software para una unidad de salud pública.",
     },
     start: { pt: "Press Start", en: "Press Start", es: "Press Start" },
-    save: { pt: "Save file (CV)", en: "Save file (CV)", es: "Save file (CV)" },
+    save: { pt: "Save file (CV · EN)", en: "Save file (CV)", es: "Save file (CV · EN)" },
     saveSoon: { pt: "CV disponível em breve", en: "CV coming soon", es: "CV disponible pronto" },
     scroll: { pt: "▼ role para jogar", en: "▼ scroll to play", es: "▼ desliza para jugar" },
   },
@@ -547,6 +548,11 @@ window.PORTFOLIO = {
     skipGameHint: { pt: "Mostra o conteúdo sem animações nem elementos de jogo", en: "Shows the content without animations or game elements", es: "Muestra el contenido sin animaciones ni elementos de juego" },
     visitorXp: { pt: "Sua XP", en: "Your XP", es: "Tu XP" },
     zoom: { pt: "Ampliar imagem", en: "Enlarge image", es: "Ampliar imagen" },
+    video: {
+      play: { pt: "Assistir ao vídeo", en: "Play video", es: "Ver video" },
+      youtube: { pt: "Abrir no YouTube", en: "Open on YouTube", es: "Abrir en YouTube" },
+      inPortuguese: { pt: "em português", en: "in Portuguese", es: "en portugués" },
+    },
     close: { pt: "Fechar", en: "Close", es: "Cerrar" },
     wip: {
       pt: "<strong>🚧 Área em construção.</strong> Volte no próximo patch!",
@@ -724,7 +730,7 @@ window.PORTFOLIO = {
   },
 
   // ---------- Estudos de caso (conteúdo) ----------
-  // Fatos verificados no GitHub (ScavengerProject-repo e ScavengerProject-doc) em 13/10/2026
+  // Fatos verificados no GitHub (ScavengerProject-repo e ScavengerProject-doc) em 13/10/2026 (commits e PRs atualizados em 11/11/2026)
   cases: {
     scavenger: {
       summary: {
@@ -739,8 +745,8 @@ window.PORTFOLIO = {
         { k: { pt: "Onde roda", en: "Runs on", es: "Dónde corre" }, v: "Vercel · Render · MongoDB Atlas" },
       ],
       stats: [
-        { n: "70", label: { pt: "commits meus", en: "of my commits", es: "commits míos" } },
-        { n: "23/26", label: { pt: "PRs abertos por mim", en: "PRs I opened", es: "PRs abiertos por mí" } },
+        { n: "74", label: { pt: "commits meus", en: "of my commits", es: "commits míos" } },
+        { n: "24/28", label: { pt: "PRs abertos por mim", en: "PRs I opened", es: "PRs abiertos por mí" } },
         { n: "20", label: { pt: "modelos de dados", en: "data models", es: "modelos de datos" } },
         { n: "16", label: { pt: "deploys em produção", en: "production deploys", es: "deploys en producción" } },
       ],
@@ -766,7 +772,7 @@ window.PORTFOLIO = {
           icon: "⚔",
           title: { pt: "Meu papel na party", en: "My role in the party", es: "Mi rol en el grupo" },
           body: [
-            { p: { pt: "Fui o maior contribuidor de código entre os oito desenvolvedores (70 commits, sem contar merges) e abri 23 dos 26 pull requests do repositório principal. Também fui quem colocou o sistema em produção e cuidou dele durante o estágio na escola.", en: "I was the top code contributor among the eight developers (70 commits, not counting merges) and opened 23 of the 26 pull requests in the main repository. I was also the one who put the system into production and looked after it during my internship at the school.", es: "Fui el mayor contribuidor de código entre los ocho desarrolladores (70 commits, sin contar merges) y abrí 23 de los 26 pull requests del repositorio principal. También fui quien puso el sistema en producción y lo cuidó durante mis prácticas en la escuela." } },
+            { p: { pt: "Fui o maior contribuidor de código entre os oito desenvolvedores (74 commits, sem contar merges) e abri 24 dos 28 pull requests do repositório principal. Também fui quem colocou o sistema em produção e cuidou dele durante o estágio na escola.", en: "I was the top code contributor among the eight developers (74 commits, not counting merges) and opened 24 of the 28 pull requests in the main repository. I was also the one who put the system into production and looked after it during my internship at the school.", es: "Fui el mayor contribuidor de código entre los ocho desarrolladores (74 commits, sin contar merges) y abrí 24 de los 28 pull requests del repositorio principal. También fui quien puso el sistema en producción y lo cuidó durante mis prácticas en la escuela." } },
             {
               list: [
                 { pt: "Deploy do front na Vercel e da API no Render, com bancos de produção e desenvolvimento separados no MongoDB Atlas.", en: "Deployed the front end on Vercel and the API on Render, with separate production and development databases on MongoDB Atlas.", es: "Deploy del front en Vercel y de la API en Render, con bases de producción y desarrollo separadas en MongoDB Atlas." },
@@ -830,7 +836,19 @@ window.PORTFOLIO = {
                 { pt: "Usado de verdade por servidores e alunos da escola durante o meu estágio.", en: "Actually used by school staff and students during my internship.", es: "Usado de verdad por funcionarios y alumnos de la escuela durante mis prácticas." },
                 { pt: "Pronto para mais de uma escola, com convites e aprovação de vínculo.", en: "Ready for more than one school, with invites and membership approval.", es: "Listo para más de una escuela, con invitaciones y aprobación de vínculo." },
                 { pt: "Documentação de produto, arquitetura (ADRs) e um guia de instalação e deploy.", en: "Product and architecture documentation (ADRs), plus an installation and deploy guide.", es: "Documentación de producto, arquitectura (ADRs) y una guía de instalación y deploy." },
+                { pt: "21 vídeos de demonstração, gravados por mim, para organizadores, coordenadores e participantes.", en: "21 demo videos I recorded for organizers, coordinators and participants.", es: "21 videos de demostración, grabados por mí, para organizadores, coordinadores y participantes." },
               ],
+            },
+            {
+              // Vídeos não listados do canal; a lista completa fica em client/src/ajuda/videos.js do ScavengerProject-repo
+              video: {
+                id: "AgPssYdcusw",
+                thumb: "img/projects/scavenger-video.webp",
+                title: { pt: "Primeiro acesso e Central de Informações (visão do organizador)", en: "First access and Information Center (organizer view)", es: "Primer acceso y Central de Información (vista del organizador)" },
+                duration: "5:14",
+                lang: "pt",
+                more: { href: "https://drgincana.vercel.app/ajuda", label: { pt: "Todos os vídeos na central de ajuda", en: "All videos in the help center", es: "Todos los videos en la central de ayuda" } },
+              },
             },
           ],
         },
