@@ -49,7 +49,8 @@ jobs:
   deploy:
     name: Publicar no GitHub Pages
     needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Push na main ou disparo manual (Actions → Run workflow), útil se um run do push travar na fila
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       pages: write
