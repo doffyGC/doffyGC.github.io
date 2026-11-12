@@ -8,6 +8,9 @@ const PAGES = [
   { url: "/quests/scavenger/", lang: "pt-BR", case: true },
   { url: "/en/quests/scavenger/", lang: "en", case: true },
   { url: "/es/quests/scavenger/", lang: "es", case: true },
+  { url: "/quests/unibot/", lang: "pt-BR", case: true },
+  { url: "/en/quests/unibot/", lang: "en", case: true },
+  { url: "/es/quests/unibot/", lang: "es", case: true },
 ];
 
 // A API do GitHub responde com dados fixos: o teste não depende da rede nem do limite de pedidos

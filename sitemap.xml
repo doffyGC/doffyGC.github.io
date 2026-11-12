@@ -42,4 +42,25 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/quests/scavenger/"/>
     <lastmod>2026-10-13</lastmod>
   </url>
+  <url>
+    <loc>https://doffygc.github.io/quests/unibot/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://doffygc.github.io/quests/unibot/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://doffygc.github.io/en/quests/unibot/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/quests/unibot/"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://doffygc.github.io/en/quests/unibot/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://doffygc.github.io/quests/unibot/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://doffygc.github.io/en/quests/unibot/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/quests/unibot/"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://doffygc.github.io/es/quests/unibot/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://doffygc.github.io/quests/unibot/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://doffygc.github.io/en/quests/unibot/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://doffygc.github.io/es/quests/unibot/"/>
+    <lastmod>2026-11-11</lastmod>
+  </url>
 </urlset>

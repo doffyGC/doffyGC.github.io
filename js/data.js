@@ -868,6 +868,130 @@ window.PORTFOLIO = {
         },
       ],
     },
+    // Fatos verificados no GitHub (doffyGC/UniBot, release V1.0) em 11/11/2026.
+    // Projeto em equipe: o "Meu papel" descreve só o que está nos meus commits.
+    unibot: {
+      summary: {
+        pt: "Um assistente da UNIPAMPA com cara de Windows Live Messenger: cursos e setores viram contatos que respondem dúvidas com base nos documentos oficiais (PPC, resoluções, calendário). Projeto de disciplina em equipe de quatro, em que fiz o setup do projeto, o agente de busca externa e a integração da versão final.",
+        en: "A UNIPAMPA assistant that looks like Windows Live Messenger: courses and offices become contacts that answer questions based on official documents (course plan, resolutions, calendar). A four-person course project where I did the project setup, the external search agent and the integration of the final release.",
+        es: "Un asistente de la UNIPAMPA con aspecto de Windows Live Messenger: carreras y sectores se vuelven contactos que responden dudas basándose en los documentos oficiales (plan de estudios, resoluciones, calendario). Proyecto de asignatura en un equipo de cuatro, en el que hice el setup del proyecto, el agente de búsqueda externa y la integración de la versión final.",
+      },
+      facts: [
+        { k: { pt: "Período", en: "Period", es: "Período" }, v: { pt: "05/2026 — 06/2026 · release V1.0 em 14/06", en: "05/2026 — 06/2026 · V1.0 release on 06/14", es: "05/2026 — 06/2026 · release V1.0 el 14/06" } },
+        { k: { pt: "Papel", en: "Role", es: "Rol" }, v: { pt: "Agente de busca externa · setup · integração e release", en: "External search agent · setup · integration and release", es: "Agente de búsqueda externa · setup · integración y release" } },
+        { k: { pt: "Party", en: "Party", es: "Grupo" }, v: { pt: "4 desenvolvedores", en: "4 developers", es: "4 desarrolladores" } },
+        { k: { pt: "Contexto", en: "Context", es: "Contexto" }, v: { pt: "Laboratório de Projetos de ES Inteligente", en: "Intelligent Software Engineering project lab (course)", es: "Laboratorio de Proyectos de IS Inteligente" } },
+      ],
+      stats: [
+        { n: "12", label: { pt: "commits meus", en: "of my commits", es: "commits míos" } },
+        { n: "3/3", label: { pt: "PRs de integração meus", en: "integration PRs by me", es: "PRs de integración míos" } },
+        { n: "10", label: { pt: "documentos no corpus", en: "documents in the corpus", es: "documentos en el corpus" } },
+        { n: "39", label: { pt: "testes da equipe", en: "team tests", es: "pruebas del equipo" } },
+      ],
+      sections: [
+        {
+          id: "briefing",
+          icon: "🗺",
+          title: { pt: "Briefing: o problema", en: "Briefing: the problem", es: "Briefing: el problema" },
+          body: [
+            { p: { pt: "Quem estuda na UNIPAMPA precisa de respostas que estão espalhadas em PDFs longos: o PPC do curso, resoluções que alteram outras resoluções, o calendário acadêmico, as regras de estágio. Achar uma informação simples, como quantas horas de ACG o curso exige, pode levar muito tempo.", en: "UNIPAMPA students need answers that are scattered across long PDFs: the course plan, resolutions that amend other resolutions, the academic calendar, internship rules. Finding something simple, like how many complementary activity hours the course requires, can take a long time.", es: "Quien estudia en la UNIPAMPA necesita respuestas que están dispersas en PDFs largos: el plan de estudios, resoluciones que modifican otras resoluciones, el calendario académico, las reglas de prácticas. Encontrar algo simple, como cuántas horas de actividades complementarias exige la carrera, puede llevar mucho tiempo." } },
+            { p: { pt: "A missão da disciplina era um assistente inteligente que respondesse com base nesses documentos, sem inventar. A equipe deu a ele a cara do Windows Live Messenger:", en: "The course's mission was an intelligent assistant that answers based on those documents, without making things up. The team gave it the look of Windows Live Messenger:", es: "La misión de la asignatura era un asistente inteligente que respondiera basándose en esos documentos, sin inventar. El equipo le dio el aspecto de Windows Live Messenger:" } },
+            {
+              list: [
+                { pt: "Cursos, setores e serviços da universidade aparecem como contatos de chat.", en: "The university's courses, offices and services show up as chat contacts.", es: "Carreras, sectores y servicios de la universidad aparecen como contactos de chat." },
+                { pt: "Contatos online respondem pelo assistente; contatos offline indicam a quem procurar.", en: "Online contacts answer through the assistant; offline contacts point you to who to ask.", es: "Los contactos en línea responden mediante el asistente; los desconectados indican a quién buscar." },
+                { pt: "Cada resposta mostra de onde veio: documento institucional, busca externa ou contato offline.", en: "Every answer shows where it came from: an institutional document, external search or an offline contact.", es: "Cada respuesta muestra de dónde vino: documento institucional, búsqueda externa o contacto desconectado." },
+              ],
+            },
+            { img: "img/projects/unibot.webp", alt: { pt: "Lista de contatos do Pampa Live Messenger: cursos e serviços da UNIPAMPA como contatos de chat", en: "Pampa Live Messenger contact list: UNIPAMPA courses and services as chat contacts", es: "Lista de contactos de Pampa Live Messenger: carreras y servicios de la UNIPAMPA como contactos de chat" } },
+          ],
+        },
+        {
+          id: "papel",
+          icon: "⚔",
+          title: { pt: "Meu papel na party", en: "My role in the party", es: "Mi rol en el grupo" },
+          body: [
+            { p: { pt: "Foi um projeto de quatro pessoas, e cada uma ficou com uma frente. O orquestrador, o RAG, a interface e os testes foram feitos pelos meus colegas. A minha parte, registrada em 12 commits:", en: "It was a four-person project, and each person took one front. The orchestrator, the RAG, the interface and the tests were built by my teammates. My part, recorded in 12 commits:", es: "Fue un proyecto de cuatro personas, y cada una tomó un frente. El orquestador, el RAG, la interfaz y las pruebas los hicieron mis compañeros. Mi parte, registrada en 12 commits:" } },
+            {
+              list: [
+                { pt: "Setup do projeto Python com uv (pyproject, dependências e lockfile) e o modelo de variáveis de ambiente.", en: "Set up the Python project with uv (pyproject, dependencies and lockfile) and the environment variables template.", es: "Setup del proyecto Python con uv (pyproject, dependencias y lockfile) y la plantilla de variables de entorno." },
+                { pt: "O agente de busca externa: um agente Agno com modelo do Groq e a Tavily como ferramenta de busca, com resposta estruturada e citações marcadas como externas.", en: "The external search agent: an Agno agent with a Groq model and Tavily as its search tool, with a structured answer and citations flagged as external.", es: "El agente de búsqueda externa: un agente Agno con modelo de Groq y Tavily como herramienta de búsqueda, con respuesta estructurada y citas marcadas como externas." },
+                { pt: "A integração da versão final: juntei as branches da equipe em três pull requests e publiquei a release V1.0.", en: "Integrating the final version: I merged the team's branches through three pull requests and published the V1.0 release.", es: "La integración de la versión final: uní las ramas del equipo en tres pull requests y publiqué la release V1.0." },
+              ],
+            },
+          ],
+        },
+        {
+          id: "mapa",
+          icon: "🧭",
+          title: { pt: "Mapa: a arquitetura da equipe", en: "Map: the team's architecture", es: "Mapa: la arquitectura del equipo" },
+          body: [
+            {
+              flow: [
+                { label: "React + Vite", sub: { pt: "interface estilo Messenger", en: "Messenger-style UI", es: "interfaz estilo Messenger" } },
+                { label: "FastAPI", sub: { pt: "/chat · /contacts", en: "/chat · /contacts", es: "/chat · /contacts" } },
+                { label: { pt: "Orquestrador", en: "Orchestrator", es: "Orquestador" }, sub: { pt: "decide o caminho", en: "picks the path", es: "decide el camino" } },
+                { label: "ChromaDB + Groq", sub: { pt: "RAG sobre o corpus", en: "RAG over the corpus", es: "RAG sobre el corpus" } },
+              ],
+            },
+            { p: { pt: "Para cada pergunta, o orquestrador tenta, nesta ordem: um dos 22 fatos institucionais curados; o RAG sobre os 10 documentos do corpus (busca vetorial no ChromaDB somada a uma busca por palavras-chave); e, se a resposta não estiver nos documentos, uma busca na web restrita aos sites da UNIPAMPA. Perguntas sobre o próprio usuário vão para um agente de memória.", en: "For each question, the orchestrator tries, in order: one of 22 curated institutional facts; RAG over the 10 documents in the corpus (ChromaDB vector search combined with keyword search); and, if the answer isn't in the documents, a web search limited to UNIPAMPA's websites. Questions about the user go to a memory agent.", es: "Para cada pregunta, el orquestador intenta, en este orden: uno de los 22 datos institucionales curados; el RAG sobre los 10 documentos del corpus (búsqueda vectorial en ChromaDB sumada a una búsqueda por palabras clave); y, si la respuesta no está en los documentos, una búsqueda web limitada a los sitios de la UNIPAMPA. Las preguntas sobre el propio usuario van a un agente de memoria." } },
+            { p: { pt: "Para não inventar, a geração usa temperatura 0,05 e um prompt que manda usar só os documentos recuperados, e cada resposta traz o documento e a página da fonte. Na release, só 4 trechos vão para o modelo, para reduzir custo e deixar as respostas mais estáveis.", en: "To avoid making things up, generation uses temperature 0.05 and a prompt that says to use only the retrieved documents, and every answer carries the source's document and page. In the release, only 4 passages go to the model, to cut cost and keep answers more stable.", es: "Para no inventar, la generación usa temperatura 0,05 y un prompt que ordena usar solo los documentos recuperados, y cada respuesta trae el documento y la página de la fuente. En la release, solo 4 fragmentos van al modelo, para reducir costo y dar respuestas más estables." } },
+          ],
+        },
+        {
+          id: "batalhas",
+          icon: "🐉",
+          title: { pt: "Batalhas: o agente de busca", en: "Battles: the search agent", es: "Batallas: el agente de búsqueda" },
+          body: [
+            { lead: { pt: "Resposta estruturada com ferramenta, no Groq.", en: "Structured output with tools, on Groq.", es: "Respuesta estructurada con herramienta, en Groq." }, p: { pt: "Eu queria que o agente usasse a Tavily e devolvesse uma resposta num formato fixo (texto mais citações). Só que o Groq não aceita o modo JSON e a chamada de ferramenta na mesma requisição. A saída foi dividir em duas etapas: o agente pesquisa com a ferramenta, e um segundo modelo, sem ferramentas, converte a resposta para o esquema.", en: "I wanted the agent to use Tavily and return an answer in a fixed format (text plus citations). But Groq doesn't accept JSON mode and tool calling in the same request. The way out was to split it into two steps: the agent searches with the tool, and a second model, with no tools, converts the answer into the schema.", es: "Quería que el agente usara Tavily y devolviera una respuesta en un formato fijo (texto más citas). Pero Groq no acepta el modo JSON y la llamada de herramienta en la misma petición. La salida fue dividirlo en dos etapas: el agente busca con la herramienta, y un segundo modelo, sin herramientas, convierte la respuesta al esquema." } },
+            { lead: { pt: "Chamadas de ferramenta quebradas.", en: "Broken tool calls.", es: "Llamadas de herramienta rotas." }, p: { pt: "De vez em quando o modelo gerava uma chamada de ferramenta malformada, que a API rejeitava. O agente tenta até três vezes e, se todas falharem, devolve uma resposta estruturada dizendo que a busca não foi possível, em vez de quebrar o chat.", en: "Every now and then the model produced a malformed tool call that the API rejected. The agent tries up to three times and, if they all fail, returns a structured answer saying the search wasn't possible, instead of breaking the chat.", es: "De vez en cuando el modelo generaba una llamada de herramienta malformada, que la API rechazaba. El agente intenta hasta tres veces y, si todas fallan, devuelve una respuesta estructurada diciendo que la búsqueda no fue posible, en lugar de romper el chat." } },
+            { lead: { pt: "Trocar o buscador sem mexer no agente.", en: "Swapping the search engine without touching the agent.", es: "Cambiar el buscador sin tocar el agente." }, p: { pt: "O agente recebe o buscador por uma interface (SearchToolProvider), e a Tavily é só uma implementação. Para usar outro serviço basta criar um novo provider, sem alterar o agente (princípio aberto/fechado).", en: "The agent receives the search engine through an interface (SearchToolProvider), and Tavily is just one implementation. Using another service only takes a new provider, without changing the agent (open/closed principle).", es: "El agente recibe el buscador por una interfaz (SearchToolProvider), y Tavily es solo una implementación. Para usar otro servicio basta crear un nuevo provider, sin modificar el agente (principio abierto/cerrado)." } },
+            { lead: { pt: "O que aconteceu na integração.", en: "What happened at integration.", es: "Lo que pasó en la integración." }, p: { pt: "Na versão final, o orquestrador ficou com outro módulo de busca, mais simples, feito pelas minhas colegas: ele chama a Tavily direto, só nos sites da UNIPAMPA. O meu agente continua no repositório e roda sozinho pela linha de comando, mas não entrou no fluxo das respostas.", en: "In the final version, the orchestrator ended up with a different, simpler search module built by my teammates: it calls Tavily directly, only on UNIPAMPA's websites. My agent is still in the repository and runs on its own from the command line, but it didn't make it into the answer flow.", es: "En la versión final, el orquestador se quedó con otro módulo de búsqueda, más simple, hecho por mis compañeras: llama a Tavily directamente, solo en los sitios de la UNIPAMPA. Mi agente sigue en el repositorio y corre solo por línea de comandos, pero no entró en el flujo de las respuestas." } },
+          ],
+        },
+        {
+          id: "testes",
+          icon: "🧪",
+          title: { pt: "Testes e qualidade", en: "Testing and quality", es: "Pruebas y calidad" },
+          body: [
+            {
+              list: [
+                { pt: "39 testes automatizados com Pytest, escritos pela equipe: contratos da API e do front, catálogo de cursos, fatos curados, memória, base vetorial e o fallback de busca externa.", en: "39 automated tests with Pytest, written by the team: API and front-end contracts, course catalog, curated facts, memory, vector store and the external search fallback.", es: "39 pruebas automatizadas con Pytest, escritas por el equipo: contratos de la API y del front, catálogo de carreras, datos curados, memoria, base vectorial y el fallback de búsqueda externa." },
+                { pt: "Scripts para conferir a base vetorial, as chaves de API e se o ambiente está pronto para a demonstração.", en: "Scripts to check the vector store, the API keys and whether the environment is ready for the demo.", es: "Scripts para verificar la base vectorial, las claves de API y si el entorno está listo para la demostración." },
+              ],
+            },
+          ],
+        },
+        {
+          id: "loot",
+          icon: "💰",
+          title: { pt: "Loot: o resultado", en: "Loot: the outcome", es: "Botín: el resultado" },
+          body: [
+            {
+              list: [
+                { pt: "Release V1.0 publicada em 14/06/2026 e entregue na disciplina.", en: "V1.0 release published on 06/14/2026 and delivered for the course.", es: "Release V1.0 publicada el 14/06/2026 y entregada en la asignatura." },
+                { pt: "Respostas com fonte: documento e página quando vêm do corpus, e os links quando vêm da web.", en: "Answers with sources: document and page when they come from the corpus, and the links when they come from the web.", es: "Respuestas con fuente: documento y página cuando vienen del corpus, y los enlaces cuando vienen de la web." },
+                { pt: "Roda localmente com um comando (uv). Não tem deploy público.", en: "Runs locally with one command (uv). There's no public deploy.", es: "Corre localmente con un comando (uv). No tiene deploy público." },
+              ],
+            },
+          ],
+        },
+        {
+          id: "xp",
+          icon: "✨",
+          title: { pt: "XP ganho: o que aprendi", en: "XP gained: what I learned", es: "XP ganada: lo que aprendí" },
+          body: [
+            {
+              list: [
+                { pt: "Código que não entra no fluxo principal não entrega valor. Hoje eu combinaria a interface entre as partes (quem chama quem, com que formato) antes de cada um construir a sua.", en: "Code that doesn't make it into the main flow delivers no value. Today I'd agree on the interface between the parts (who calls whom, in what format) before everyone builds their own piece.", es: "Código que no entra en el flujo principal no entrega valor. Hoy acordaría la interfaz entre las partes (quién llama a quién, con qué formato) antes de que cada uno construya la suya." },
+                { pt: "Cada provedor de LLM tem limitações próprias, como não juntar modo JSON e ferramentas. Vale testar o caminho completo cedo.", en: "Every LLM provider has its own limits, like not mixing JSON mode and tools. It pays to test the whole path early.", es: "Cada proveedor de LLM tiene sus propias limitaciones, como no mezclar modo JSON y herramientas. Conviene probar el camino completo temprano." },
+                { pt: "Num RAG, não inventar depende de várias camadas juntas: fatos curados, recuperação, prompt, temperatura baixa e mostrar a fonte.", en: "In RAG, not making things up depends on several layers together: curated facts, retrieval, the prompt, low temperature and showing the source.", es: "En un RAG, no inventar depende de varias capas juntas: datos curados, recuperación, prompt, temperatura baja y mostrar la fuente." },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   },
 
   // ---------- Segredos ----------
